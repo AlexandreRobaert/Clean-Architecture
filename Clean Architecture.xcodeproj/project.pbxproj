@@ -6,9 +6,16 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AC6A84F226B603AE00AC7B05 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A84F126B603AE00AC7B05 /* AddAccount.swift */; };
+		AC6A84F426B606B700AC7B05 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A84F326B606B700AC7B05 /* AccountModel.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		AC6A84E926B602FE00AC7B05 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6A84EC26B602FE00AC7B05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC6A84F126B603AE00AC7B05 /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
+		AC6A84F326B606B700AC7B05 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +48,8 @@
 		AC6A84EA26B602FE00AC7B05 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				AC6A84F126B603AE00AC7B05 /* AddAccount.swift */,
+				AC6A84F326B606B700AC7B05 /* AccountModel.swift */,
 				AC6A84EC26B602FE00AC7B05 /* Info.plist */,
 			);
 			path = Domain;
@@ -87,6 +96,7 @@
 				TargetAttributes = {
 					AC6A84E826B602FE00AC7B05 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -123,6 +133,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6A84F226B603AE00AC7B05 /* AddAccount.swift in Sources */,
+				AC6A84F426B606B700AC7B05 /* AccountModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +265,7 @@
 		AC6A84EF26B602FE00AC7B05 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -270,6 +283,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.robaert.Domain;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -277,6 +291,7 @@
 		AC6A84F026B602FE00AC7B05 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
