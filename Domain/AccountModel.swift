@@ -7,8 +7,15 @@
 
 import Foundation
 
-struct AccountModel: Codable {
-    var id: String
-    var email: String
-    var password: String
+public struct AccountModel: Codable {
+    
+    public var id: String
+    public var email: String
+    public var password: String
+    
+    public init(id: String, email: String, password: String) {
+        self.id = id
+        self.email = email
+        self.password = password
+    }
 }
