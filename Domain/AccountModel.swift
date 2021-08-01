@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AccountModel: Codable {
+public struct AccountModel: Model {
     
     public var id: String
     public var email: String
