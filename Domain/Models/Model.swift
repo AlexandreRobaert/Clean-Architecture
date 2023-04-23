@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol Model: Codable {
+public protocol Model: Codable, Equatable {
     
 }
 
@@ -15,14 +15,5 @@ public extension Model {
     
     func toData()-> Data? {
         return try? JSONEncoder().encode(self)
-    }
-}
-
-public extension Data {
-    func parse<T: Decodable>() -> T? {
-        guard let object = try? JSONDecoder().decode(T.self, from: self) else {
-            return nil
-        }
-        return object
     }
 }

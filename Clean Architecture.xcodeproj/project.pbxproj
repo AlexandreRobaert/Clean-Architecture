@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC22F90829F58F2B00256AE6 /* Data+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22F90729F58F2B00256AE6 /* Data+extension.swift */; };
 		AC6A84F226B603AE00AC7B05 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A84F126B603AE00AC7B05 /* AddAccount.swift */; };
 		AC6A84F426B606B700AC7B05 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A84F326B606B700AC7B05 /* AccountModel.swift */; };
 		AC6A850326B6071600AC7B05 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84FA26B6071600AC7B05 /* Data.framework */; };
@@ -52,12 +53,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC22F90729F58F2B00256AE6 /* Data+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+extension.swift"; sourceTree = "<group>"; };
+		AC22F90A29F5902D00256AE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC6A84E926B602FE00AC7B05 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6A84EC26B602FE00AC7B05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC6A84F126B603AE00AC7B05 /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
 		AC6A84F326B606B700AC7B05 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		AC6A84FA26B6071600AC7B05 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC6A84FD26B6071600AC7B05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC6A850226B6071600AC7B05 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6A850726B6071600AC7B05 /* RemoteAddAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccountTests.swift; sourceTree = "<group>"; };
 		AC6A850926B6071600AC7B05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC22F90929F58F3800256AE6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AC22F90729F58F2B00256AE6 /* Data+extension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		AC6A84CF26B602CE00AC7B05 = {
 			isa = PBXGroup;
 			children = (
@@ -130,9 +140,10 @@
 		AC6A84FB26B6071600AC7B05 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AC22F90A29F5902D00256AE6 /* Info.plist */,
 				AC6A852026B7362400AC7B05 /* UseCases */,
 				AC6A851F26B7361800AC7B05 /* Http */,
-				AC6A84FD26B6071600AC7B05 /* Info.plist */,
+				AC22F90929F58F3800256AE6 /* Helpers */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -286,7 +297,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					AC6A84E826B602FE00AC7B05 = {
@@ -363,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC6A851C26B7358A00AC7B05 /* HttpPostClient.swift in Sources */,
+				AC22F90829F58F2B00256AE6 /* Data+extension.swift in Sources */,
 				ACC1489D29ECC94500ACDC30 /* HttpError.swift in Sources */,
 				AC6A851A26B7355B00AC7B05 /* RemoteAddAccount.swift in Sources */,
 			);
