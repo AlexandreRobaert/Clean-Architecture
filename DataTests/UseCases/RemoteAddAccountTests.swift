@@ -33,7 +33,7 @@ class RemoteAddAccountTests: XCTestCase {
         sut.add(addAccountModel: makeAddAccountModel())  { result in
             switch result {
             case .success:
-                XCTFail("Expected error receive: \(result) instead")
+                XCTFail("Expected error received: \(result) instead")
             case .failure(let error):
                 XCTAssertEqual(error, .unexpected)
             }
@@ -43,7 +43,7 @@ class RemoteAddAccountTests: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
-    func test_add_should_complete_with_error_if_client_completes_with_data() throws {
+    func test_add_should_complete_with_error_if_client_completes_with_valide_data() throws {
         let (sut, httpClientSpy) = makeSut()
         let exp = expectation(description: "waiting")
         let expectedAccount = makeAccountModel()
@@ -56,7 +56,23 @@ class RemoteAddAccountTests: XCTestCase {
             }
             exp.fulfill()
         }
-        httpClientSpy.completeWithData(expectedAccount.toData()!)
+        httpClientSpy.completeWithValidData(expectedAccount.toData()!)
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_add_should_complete_with_error_if_client_completes_with_invalid_data() throws {
+        let (sut, httpClientSpy) = makeSut()
+        let exp = expectation(description: "waiting")
+        sut.add(addAccountModel: makeAddAccountModel())  { result in
+            switch result {
+            case .success:
+                XCTFail("Expected error received: \(result) instead")
+            case .failure(let error):
+                XCTAssertEqual(error, .unexpected)
+            }
+            exp.fulfill()
+        }
+        httpClientSpy.completeWithInvalidData(Data("invalid_data".utf8))
         wait(for: [exp], timeout: 1)
     }
 }
@@ -95,7 +111,11 @@ private extension RemoteAddAccountTests {
             completion?(.failure(.noConnectionError))
         }
         
-        func completeWithData(_ data: Data) {
+        func completeWithValidData(_ data: Data) {
+            completion?(.success(data))
+        }
+        
+        func completeWithInvalidData(_ data: Data) {
             completion?(.success(data))
         }
     }
