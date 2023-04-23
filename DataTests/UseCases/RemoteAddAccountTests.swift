@@ -27,13 +27,14 @@ class RemoteAddAccountTests: XCTestCase {
         XCTAssertEqual(httpClientSpy.data, addAccountModel.toData())
     }
     
-    func test_add_should_complete_with_error_if_client_fails() throws {
+    func test_add_should_complete_with_error_if_client_completes_with_error() throws {
         let (sut, httpClientSpy) = makeSut()
-        let addAccountModel = makeAddAccountModel()
-        
         let exp = expectation(description: "waiting")
-        sut.add(addAccountModel: addAccountModel)  { error in
-            XCTAssertEqual(error, .unexpected)
+        sut.add(addAccountModel: makeAddAccountModel())  { result in
+            switch result {
+            case .success: XCTFail("Expected error receive: \(result) instead")
+            case .failure(let error): XCTAssertEqual(error, .unexpected)
+            }
             exp.fulfill()
         }
         httpClientSpy.completeWithError(.noConnectionError)
@@ -43,7 +44,7 @@ class RemoteAddAccountTests: XCTestCase {
 
 extension RemoteAddAccountTests {
     
-    func makeSut(url: URL = URL(string: "http://any-url.com")!) -> (sut: RemoteAddAccount, HttpClientSpy: HttpClientSpy) {
+    func makeSut(url: URL = URL(string: "http://any-url.com")!) -> (sut: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteAddAccount(url: url, httpClient: httpClientSpy)
         return (sut, httpClientSpy)
@@ -58,9 +59,9 @@ extension RemoteAddAccountTests {
         var urls: [URL] = []
         var data: Data?
         var callsAccount = 0
-        var completion: ((HttpError) -> Void)?
+        var completion: ((Result<Data, HttpError>) -> Void)?
         
-        func post(to url: URL, with data: Data?, completion: @escaping (HttpError) -> Void) {
+        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
             self.urls.append(url)
             self.data = data
             self.callsAccount += 1
@@ -68,7 +69,7 @@ extension RemoteAddAccountTests {
         }
         
         func completeWithError(_ error: HttpError) {
-            completion?(error)
+            completion?(.failure(.noConnectionError))
         }
     }
 }
