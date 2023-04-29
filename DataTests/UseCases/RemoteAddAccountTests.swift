@@ -81,12 +81,6 @@ private extension RemoteAddAccountTests {
         return AccountModel(id: "1", name: "any name", email: "any email", password: "123456")
     }
     
-    func checkMemoryLeak(instance: AnyObject, file: StaticString, line: UInt) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, file: file, line: line)
-        }
-    }
-    
     func expect(_ sut: RemoteAddAccount, expectedResult: (Result<AccountModel, DomainError>), with action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         
         let exp = expectation(description: "waiting")
@@ -103,32 +97,5 @@ private extension RemoteAddAccountTests {
         }
         action()
         wait(for: [exp], timeout: 1)
-    }
-    
-    class HttpClientSpy: HttpPostClient {
-        
-        var urls: [URL] = []
-        var data: Data?
-        var callsAccount = 0
-        var completion: ((Result<Data, HttpError>) -> Void)?
-        
-        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
-            self.urls.append(url)
-            self.data = data
-            self.callsAccount += 1
-            self.completion = completion
-        }
-        
-        func completeWithError(_ error: HttpError) {
-            completion?(.failure(.noConnectivityError))
-        }
-        
-        func completeWithValidData(_ data: Data) {
-            completion?(.success(data))
-        }
-        
-        func completeWithInvalidData(_ data: Data) {
-            completion?(.success(data))
-        }
     }
 }
