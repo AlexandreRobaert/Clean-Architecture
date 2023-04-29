@@ -66,17 +66,17 @@ private extension RemoteAddAccountTests {
         return AccountModel(id: "1", name: "any name", email: "any email", password: "123456")
     }
     
-    func expect(_ sut: RemoteAddAccount, expectedResult: (Result<AccountModel, DomainError>), with action: () -> Void) {
+    func expect(_ sut: RemoteAddAccount, expectedResult: (Result<AccountModel, DomainError>), with action: () -> Void, file: StaticString = #file, line: UInt = #line) {
         
         let exp = expectation(description: "waiting")
         
         sut.add(addAccountModel: makeAddAccountModel()) { receivedResult in
             switch (expectedResult, receivedResult) {
             case let (.failure(expectedError), .failure(receivedError)):
-                XCTAssertEqual(expectedError, receivedError)
+                XCTAssertEqual(expectedError, receivedError, file: file, line: line)
             case let (.success(expectedAccount), .success(receivedAccount)):
-                XCTAssertEqual(expectedAccount, receivedAccount)
-            default: XCTFail("Esperava \(expectedResult) e devolveu \(receivedResult)")
+                XCTAssertEqual(expectedAccount, receivedAccount, file: file, line: line)
+            default: XCTFail("Esperava \(expectedResult) e devolveu \(receivedResult)", file: file, line: line)
             }
             exp.fulfill()
         }
