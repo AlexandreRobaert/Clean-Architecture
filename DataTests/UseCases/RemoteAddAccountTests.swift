@@ -30,7 +30,7 @@ class RemoteAddAccountTests: XCTestCase {
     func test_add_should_complete_with_error_if_client_completes_with_error() throws {
         let (sut, httpClientSpy) = makeSut()
         expect(sut, expectedResult: .failure(.unexpected)) {
-            httpClientSpy.completeWithError(.noConnectionError)
+            httpClientSpy.completeWithError(.noConnectivityError)
         }
     }
     
@@ -47,6 +47,18 @@ class RemoteAddAccountTests: XCTestCase {
         expect(sut, expectedResult: .failure(.unexpected)) {
             httpClientSpy.completeWithInvalidData(Data("invalid_data".utf8))
         }
+    }
+    
+    func test_add_should_not_complete_if_sut_has_been_deallocated() throws {
+        let httpClientSpy = HttpClientSpy()
+        var sut: RemoteAddAccount? = RemoteAddAccount(url: URL(string: "http://any-url.com")!, httpClient: httpClientSpy)
+        var expectedResult: Result<AccountModel, DomainError>?
+        sut?.add(addAccountModel: makeAddAccountModel(), completion: { result in
+            expectedResult = result
+        })
+        sut = nil
+        httpClientSpy.completeWithError(.noConnectivityError)
+        XCTAssertNil(expectedResult)
     }
 }
 
@@ -108,7 +120,7 @@ private extension RemoteAddAccountTests {
         }
         
         func completeWithError(_ error: HttpError) {
-            completion?(.failure(.noConnectionError))
+            completion?(.failure(.noConnectivityError))
         }
         
         func completeWithValidData(_ data: Data) {
