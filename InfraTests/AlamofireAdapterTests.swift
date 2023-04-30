@@ -23,7 +23,7 @@ class AlamofireAdapter {
 
 final class AlamofireAdapterTests: XCTestCase {
 
-    func test_request_alamofire_url_e_method_corretos() throws {
+    func test_post_request_alamofire_url_e_method_corretos() throws {
         let url = URL(string: "https://any-url.com")!
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [URLProtocolStub.self]

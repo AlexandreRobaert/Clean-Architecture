@@ -7,7 +7,7 @@
 		<key>Data.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Domain.xcscheme_^#shared#^_</key>
 		<dict>
@@ -22,7 +22,7 @@
 		<key>Infra.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<key>InfraTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -33,6 +33,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>AC6A84E826B602FE00AC7B05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACFDD00829FDD7A100FC2EFD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACFDD01E29FE029A00FC2EFD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
