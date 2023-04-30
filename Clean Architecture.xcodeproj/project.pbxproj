@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC0DE83B29FF177F004E66F7 /* testess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DE83A29FF177F004E66F7 /* testess.swift */; };
 		AC22F90829F58F2B00256AE6 /* Data+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22F90729F58F2B00256AE6 /* Data+extension.swift */; };
 		AC6A84F226B603AE00AC7B05 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A84F126B603AE00AC7B05 /* AddAccount.swift */; };
 		AC6A84F426B606B700AC7B05 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A84F326B606B700AC7B05 /* AccountModel.swift */; };
@@ -87,7 +86,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AC0DE83A29FF177F004E66F7 /* testess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testess.swift; sourceTree = "<group>"; };
 		AC22F90729F58F2B00256AE6 /* Data+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+extension.swift"; sourceTree = "<group>"; };
 		AC22F90A29F5902D00256AE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC6A84E926B602FE00AC7B05 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,7 +302,6 @@
 			isa = PBXGroup;
 			children = (
 				ACFDD01029FDD86900FC2EFD /* AlamofireAdapterTests.swift */,
-				AC0DE83A29FF177F004E66F7 /* testess.swift */,
 			);
 			path = InfraTests;
 			sourceTree = "<group>";
@@ -571,7 +568,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFDD02929FE02AE00FC2EFD /* AlamofireAdapterTests.swift in Sources */,
-				AC0DE83B29FF177F004E66F7 /* testess.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
