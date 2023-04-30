@@ -17,13 +17,13 @@ class AlamofireAdapter {
     }
     
     func post(url: URL) {
-        session.request(url).resume()
+        session.request(url, method: .post).resume()
     }
 }
 
 final class AlamofireAdapterTests: XCTestCase {
 
-    func testExample() throws {
+    func test_request_alamofire_url_e_method_corretos() throws {
         let url = URL(string: "https://any-url.com")!
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [URLProtocolStub.self]
@@ -33,6 +33,7 @@ final class AlamofireAdapterTests: XCTestCase {
         sut.post(url: url)
         URLProtocolStub.observerCompletion { request in
             XCTAssertEqual(url, request.url)
+            XCTAssertEqual(HTTPMethod.post.rawValue, request.method?.rawValue)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1)
