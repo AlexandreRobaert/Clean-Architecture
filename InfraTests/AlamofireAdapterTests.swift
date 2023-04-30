@@ -7,6 +7,7 @@
 
 import XCTest
 import Alamofire
+import Data
 
 class AlamofireAdapter {
     
@@ -16,17 +17,23 @@ class AlamofireAdapter {
         self.session = session
     }
     
-    func post(url: URL, with data: Data?) {
-        let json = data == nil ? nil : try? JSONSerialization.jsonObject(with: data!, options: .fragmentsAllowed) as? [String: Any]
-        session.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).resume()
+    func post(url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
+        session.request(url, method: .post, parameters: data?.toDictionary(), encoding: JSONEncoding.default).responseData { dataResponse in
+            switch dataResponse.result {
+            case .success:
+                break
+            case .failure:
+                completion(.failure(.noConnectivityError))
+            }
+        }
     }
 }
 
 final class AlamofireAdapterTests: XCTestCase {
 
-    func test_post_request_alamofire_url_e_method_corretos() throws {
-        let url = URL(string: "https://any-url.com")!
-        let data = #"{"name": "Alexandre"}"#.data(using: .utf8)
+    func test_post_request_alamofire_url_e_method_e_contem_dados() throws {
+        let url = makeURL()
+        let data = validData()
         
         testRequest(url: url, data: data) { request in
             XCTAssertEqual(url, request.url)
@@ -41,20 +48,39 @@ final class AlamofireAdapterTests: XCTestCase {
             XCTAssertNil(request.httpBodyStream)
         }
     }
+    
+    func test_post_com_error_deve_completar_com_error() throws {
+    
+        let sut = makeSut()
+        let expectation = expectation(description: "Fazendo o request")
+        URLProtocolStub.simulateResult(data: nil, response: nil, error: makeError())
+        sut.post(url: makeURL(), with: validData()) { result in
+            switch result {
+            case .success(let success):
+                XCTFail("Erro não esperado, deveria retornar com Erro, mas retornou \(success)")
+            case .failure(let failure):
+                XCTAssertEqual(failure, .noConnectivityError)
+            }
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 1)
+    }
 }
 
 private extension AlamofireAdapterTests {
     
-    func makeSut() -> AlamofireAdapter {
+    func makeSut(file: StaticString = #file, line: UInt = #line) -> AlamofireAdapter {
         let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [URLProtocolStub.self]
         let session = Session(configuration: configuration)
-        return AlamofireAdapter(session: session)
+        let sut = AlamofireAdapter(session: session)
+        checkMemoryLeak(instance: sut, file: file, line: line)
+        return sut
     }
     
-    func testRequest(url: URL = URL(string: "https://any-url.com")!, data: Data?, completion: @escaping (URLRequest) -> Void) {
+    func testRequest(url: URL = makeURL(), data: Data?, completion: @escaping (URLRequest) -> Void) {
         let sut = makeSut()
-        sut.post(url: url, with: data)
+        sut.post(url: url, with: data) {_ in }
         let expectation = expectation(description: "Fazendo o Post")
         URLProtocolStub.observerCompletion { request in
             completion(request)
@@ -68,9 +94,16 @@ private extension AlamofireAdapterTests {
 class URLProtocolStub: URLProtocol {
     
     static var emit: ((URLRequest) -> Void)?
+    static var result: (data: Data?, response: HTTPURLResponse?, error: Error?)
     
     static func observerCompletion(completion: @escaping (URLRequest) -> Void) {
         URLProtocolStub.emit = completion
+    }
+    
+    static func simulateResult(data: Data?, response: HTTPURLResponse?, error: Error?) {
+        result.data = data
+        result.response = response
+        result.error = error
     }
     
     override class func canInit(with request: URLRequest) -> Bool {
@@ -85,6 +118,19 @@ class URLProtocolStub: URLProtocol {
     
     override func startLoading() {
         URLProtocolStub.emit?(request)
+        if let data = URLProtocolStub.result.data {
+            client?.urlProtocol(self, didLoad: data)
+        }
+        
+        if let response = URLProtocolStub.result.response {
+            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+        }
+        
+        if let error = URLProtocolStub.result.error {
+            client?.urlProtocol(self, didFailWithError: error)
+        }
+        
+        client?.urlProtocolDidFinishLoading(self)
     }
     
     override func stopLoading() {
