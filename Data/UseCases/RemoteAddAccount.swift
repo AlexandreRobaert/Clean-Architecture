@@ -26,7 +26,7 @@ public final class RemoteAddAccount: AddAccount {
             case .failure:
                 completion(.failure(.unexpected))
             case .success(let data):
-                guard let accountModel: AccountModel = data.parse() else {
+                guard let accountModel: AccountModel = data?.parse() else {
                     return completion(.failure(.unexpected))
                 }
                 completion(.success(accountModel))
