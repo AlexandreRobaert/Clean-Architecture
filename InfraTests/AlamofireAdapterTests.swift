@@ -50,20 +50,8 @@ final class AlamofireAdapterTests: XCTestCase {
     }
     
     func test_post_com_error_deve_completar_com_error() throws {
-    
-        let sut = makeSut()
-        let expectation = expectation(description: "Fazendo o request")
-        URLProtocolStub.simulateResult(data: nil, response: nil, error: makeError())
-        sut.post(url: makeURL(), with: validData()) { result in
-            switch result {
-            case .success(let success):
-                XCTFail("Erro não esperado, deveria retornar com Erro, mas retornou \(success)")
-            case .failure(let failure):
-                XCTAssertEqual(failure, .noConnectivityError)
-            }
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 1)
+        
+        expectedResult(for: .failure(.noConnectivityError), when: (data: validData(), response: nil, error: makeError()))
     }
 }
 
@@ -79,11 +67,33 @@ private extension AlamofireAdapterTests {
     }
     
     func testRequest(url: URL = makeURL(), data: Data?, completion: @escaping (URLRequest) -> Void) {
-        let sut = makeSut()
-        sut.post(url: url, with: data) {_ in }
+        
         let expectation = expectation(description: "Fazendo o Post")
-        URLProtocolStub.observerCompletion { request in
-            completion(request)
+        let sut = makeSut()
+        sut.post(url: url, with: data) { _ in
+            expectation.fulfill()
+        }
+        var request: URLRequest?
+        URLProtocolStub.observerCompletion { requestReturned in
+            request = requestReturned
+        }
+        wait(for: [expectation], timeout: 1)
+        completion(request!)
+    }
+    
+    func expectedResult(for expectedResult: Result<Data, HttpError>, when insertDataResult: (data: Data?, response: HTTPURLResponse?, error: Error?), file: StaticString = #file, line: UInt = #line) {
+        let sut = makeSut()
+        let expectation = expectation(description: "Fazendo o request")
+        URLProtocolStub.simulateResult = insertDataResult
+        sut.post(url: makeURL(), with: insertDataResult.data) { receivedResult in
+            switch (expectedResult, receivedResult) {
+            case let (.failure(expectedError), .failure(receivedError)):
+                XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+            case let (.success(expectedData), .success(receivedData)):
+                XCTAssertEqual(expectedData, receivedData, file: file, line: line)
+            default:
+                XCTFail("Esperava \(expectedResult) e retornou \(receivedResult)", file: file, line: line)
+            }
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 1)
@@ -94,16 +104,10 @@ private extension AlamofireAdapterTests {
 class URLProtocolStub: URLProtocol {
     
     static var emit: ((URLRequest) -> Void)?
-    static var result: (data: Data?, response: HTTPURLResponse?, error: Error?)
+    static var simulateResult: (data: Data?, response: HTTPURLResponse?, error: Error?)
     
     static func observerCompletion(completion: @escaping (URLRequest) -> Void) {
         URLProtocolStub.emit = completion
-    }
-    
-    static func simulateResult(data: Data?, response: HTTPURLResponse?, error: Error?) {
-        result.data = data
-        result.response = response
-        result.error = error
     }
     
     override class func canInit(with request: URLRequest) -> Bool {
@@ -118,15 +122,15 @@ class URLProtocolStub: URLProtocol {
     
     override func startLoading() {
         URLProtocolStub.emit?(request)
-        if let data = URLProtocolStub.result.data {
+        if let data = URLProtocolStub.simulateResult.data {
             client?.urlProtocol(self, didLoad: data)
         }
         
-        if let response = URLProtocolStub.result.response {
+        if let response = URLProtocolStub.simulateResult.response {
             client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
         }
         
-        if let error = URLProtocolStub.result.error {
+        if let error = URLProtocolStub.simulateResult.error {
             client?.urlProtocol(self, didFailWithError: error)
         }
         

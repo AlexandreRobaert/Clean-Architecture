@@ -7,8 +7,8 @@
 
 import Foundation
 
-public func validData() -> Data? {
-    #"{"name": "Alexandre"}"#.data(using: .utf8)
+public func validData() -> Data {
+    #"{"name": "Alexandre"}"#.data(using: .utf8) ?? Data()
 }
 
 public func invalidData() -> Data? {
