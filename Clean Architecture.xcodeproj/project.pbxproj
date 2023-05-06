@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC0287BB2A06EC56004E80F4 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0287BA2A06EC56004E80F4 /* AlamofireAdapter.swift */; };
+		AC0287BF2A06EF7C004E80F4 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0287BD2A06EE24004E80F4 /* URLProtocolStub.swift */; };
 		AC0DE83C29FF24B1004E66F7 /* XCTest+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFDCFFD29FDD54200FC2EFD /* XCTest+extensions.swift */; };
 		AC0DE83E29FF2BF9004E66F7 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DE83D29FF2BF9004E66F7 /* Helpers.swift */; };
 		AC22F90829F58F2B00256AE6 /* Data+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22F90729F58F2B00256AE6 /* Data+extension.swift */; };
@@ -24,7 +25,6 @@
 		ACC1489D29ECC94500ACDC30 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1489C29ECC94500ACDC30 /* HttpError.swift */; };
 		ACFDCFFE29FDD54200FC2EFD /* XCTest+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFDCFFD29FDD54200FC2EFD /* XCTest+extensions.swift */; };
 		ACFDD00329FDD64D00FC2EFD /* HttpClienteSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFDD00229FDD64D00FC2EFD /* HttpClienteSpy.swift */; };
-		ACFDD01129FDD86900FC2EFD /* AlamofireAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFDD01029FDD86900FC2EFD /* AlamofireAdapterTests.swift */; };
 		ACFDD01229FDFF9000FC2EFD /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84FA26B6071600AC7B05 /* Data.framework */; };
 		ACFDD01329FDFF9000FC2EFD /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84FA26B6071600AC7B05 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACFDD01A29FE010E00FC2EFD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ACFDD01929FE010E00FC2EFD /* Alamofire */; };
@@ -90,6 +90,7 @@
 
 /* Begin PBXFileReference section */
 		AC0287BA2A06EC56004E80F4 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
+		AC0287BD2A06EE24004E80F4 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		AC0DE83D29FF2BF9004E66F7 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		AC22F90729F58F2B00256AE6 /* Data+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+extension.swift"; sourceTree = "<group>"; };
 		AC22F90A29F5902D00256AE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -161,6 +162,15 @@
 			isa = PBXGroup;
 			children = (
 				AC0287BA2A06EC56004E80F4 /* AlamofireAdapter.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		AC0287C12A06EFB6004E80F4 /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				AC0287BD2A06EE24004E80F4 /* URLProtocolStub.swift */,
+				ACFDD01029FDD86900FC2EFD /* AlamofireAdapterTests.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -316,7 +326,7 @@
 		ACFDD02029FE029A00FC2EFD /* InfraTests */ = {
 			isa = PBXGroup;
 			children = (
-				ACFDD01029FDD86900FC2EFD /* AlamofireAdapterTests.swift */,
+				AC0287C12A06EFB6004E80F4 /* Http */,
 			);
 			path = InfraTests;
 			sourceTree = "<group>";
@@ -567,7 +577,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACFDCFFE29FDD54200FC2EFD /* XCTest+extensions.swift in Sources */,
-				ACFDD01129FDD86900FC2EFD /* AlamofireAdapterTests.swift in Sources */,
 				AC6A850826B6071600AC7B05 /* RemoteAddAccountTests.swift in Sources */,
 				ACFDD00329FDD64D00FC2EFD /* HttpClienteSpy.swift in Sources */,
 			);
@@ -586,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC0DE83C29FF24B1004E66F7 /* XCTest+extensions.swift in Sources */,
+				AC0287BF2A06EF7C004E80F4 /* URLProtocolStub.swift in Sources */,
 				ACFDD02929FE02AE00FC2EFD /* AlamofireAdapterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -928,7 +938,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
@@ -963,7 +973,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
@@ -984,7 +994,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KY9KTSK9G3;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.robaert.alexandre.InfraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1002,7 +1012,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KY9KTSK9G3;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.robaert.alexandre.InfraTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
