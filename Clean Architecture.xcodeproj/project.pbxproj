@@ -91,6 +91,7 @@
 /* Begin PBXFileReference section */
 		AC0287BA2A06EC56004E80F4 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		AC0287BD2A06EE24004E80F4 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
+		AC0287C52A073B7B004E80F4 /* Data.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Data.xctestplan; sourceTree = "<group>"; };
 		AC0DE83D29FF2BF9004E66F7 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		AC22F90729F58F2B00256AE6 /* Data+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+extension.swift"; sourceTree = "<group>"; };
 		AC22F90A29F5902D00256AE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -234,6 +235,7 @@
 		AC6A850626B6071600AC7B05 /* DataTests */ = {
 			isa = PBXGroup;
 			children = (
+				AC0287C52A073B7B004E80F4 /* Data.xctestplan */,
 				ACFDD00129FDD63E00FC2EFD /* Http */,
 				ACFDCFFC29FDD50900FC2EFD /* Helpers */,
 				AC6A852126B7366200AC7B05 /* UseCases */,

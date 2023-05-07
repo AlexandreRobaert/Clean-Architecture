@@ -21,7 +21,7 @@ public final class RemoteAddAccount: AddAccount {
         
         httpClient.post(to: url, with: addAccountModel.toData()) { [weak self] result in
             
-            guard let self else { return }
+            guard self != nil else { return }
             switch result {
             case .failure:
                 completion(.failure(.unexpected))
