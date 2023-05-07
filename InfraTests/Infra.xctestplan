@@ -4,15 +4,14 @@
   ],
   "defaultOptions" : {
     "codeCoverage" : false,
-    "testTimeoutsEnabled" : true,
     "threadSanitizerEnabled" : true
   },
   "testTargets" : [
     {
       "target" : {
         "containerPath" : "container:Clean Architecture.xcodeproj",
-        "identifier" : "AC6A850126B6071600AC7B05",
-        "name" : "DataTests"
+        "identifier" : "ACFDD01E29FE029A00FC2EFD",
+        "name" : "InfraTests"
       }
     }
   ],

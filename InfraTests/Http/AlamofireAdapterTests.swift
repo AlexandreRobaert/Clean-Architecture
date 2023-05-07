@@ -54,6 +54,7 @@ final class AlamofireAdapterTests: XCTestCase {
         expectedResult(for: .failure(.unauthorizedError), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 401), error: nil))
         expectedResult(for: .failure(.unauthorizedError), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 422), error: nil))
         expectedResult(for: .failure(.forBidden), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 403), error: nil))
+        expectedResult(for: .failure(.noConnectivityError), when: (makeValidData(), makeHttpResponse(statusCode: 300), nil))
     }
     
     func test_post_com_dados_deve_completar_com_status_200() throws {
