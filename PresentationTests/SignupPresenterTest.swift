@@ -27,6 +27,11 @@ class SignupPresenter {
             alertView.showMessage(viewModel: makeAlertViewModelErrorName())
             return
         }
+        
+        guard let email = viewModel.email, !email.isEmpty else {
+            alertView.showMessage(viewModel: makeAlertViewModelWithoutEmail())
+            return
+        }
     }
 }
 
@@ -55,6 +60,14 @@ final class SignupPresenterTest: XCTestCase {
         let signupViewModel = SignupViewModel(name: nil, email: "any_mail", password: "any_password", passwordConfirmation: "any_password")
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelErrorName())
+    }
+    
+    func test_signup_deve_mostrar_mensagem_com_email_inválido() throws {
+        
+        let (sut, alertViewSpy) = makeSut()
+        let signupViewModel = SignupViewModel(name: "any_name", email: nil, password: "any_password", passwordConfirmation: "any_password")
+        sut.signUp(viewModel: signupViewModel)
+        XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelWithoutEmail())
     }
 
 //    func testPerformanceExample() throws {
@@ -87,4 +100,8 @@ extension SignupPresenterTest {
 
 func makeAlertViewModelErrorName() -> AlertViewModel {
     AlertViewModel(title: "Falha na validação", message: "Nome é obrigatório")
+}
+
+func makeAlertViewModelWithoutEmail() -> AlertViewModel {
+    AlertViewModel(title: "Falha na validação", message: "Email é obrigatório")
 }
