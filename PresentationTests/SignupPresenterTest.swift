@@ -32,6 +32,20 @@ class SignupPresenter {
             alertView.showMessage(viewModel: makeAlertViewModelWithoutEmail())
             return
         }
+        
+        guard let password = viewModel.password, !password.isEmpty,
+              let passwordConfirmation = viewModel.passwordConfirmation,
+              !passwordConfirmation.isEmpty else {
+            alertView.showMessage(viewModel: makeAlertViewModelWithoutPassword())
+            return
+        }
+        
+        guard let password = viewModel.password,
+              let passwordConfirmation = viewModel.passwordConfirmation,
+              password.elementsEqual(passwordConfirmation) else {
+            alertView.showMessage(viewModel: makeAlertViewModelNotMatch())
+            return
+        }
     }
 }
 
@@ -69,6 +83,22 @@ final class SignupPresenterTest: XCTestCase {
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelWithoutEmail())
     }
+    
+    func test_signup_deve_mostrar_mensagem_sem_uma_senha_obrigatoria() throws {
+        
+        let (sut, alertViewSpy) = makeSut()
+        let signupViewModel = SignupViewModel(name: "any_name", email: "any_mail", password: nil, passwordConfirmation: nil)
+        sut.signUp(viewModel: signupViewModel)
+        XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelWithoutPassword())
+    }
+    
+    func test_signup_deve_mostrar_mensagem_com_senha_nao_confere_com_repete_senha() throws {
+        
+        let (sut, alertViewSpy) = makeSut()
+        let signupViewModel = SignupViewModel(name: "any_name", email: "any_mail", password: "12345", passwordConfirmation: "xxxxx")
+        sut.signUp(viewModel: signupViewModel)
+        XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelNotMatch())
+    }
 
 //    func testPerformanceExample() throws {
 //        // This is an example of a performance test case.
@@ -104,4 +134,12 @@ func makeAlertViewModelErrorName() -> AlertViewModel {
 
 func makeAlertViewModelWithoutEmail() -> AlertViewModel {
     AlertViewModel(title: "Falha na validação", message: "Email é obrigatório")
+}
+
+func makeAlertViewModelWithoutPassword() -> AlertViewModel {
+    AlertViewModel(title: "Falha na validação", message: "Senha é obrigatória")
+}
+
+func makeAlertViewModelNotMatch() -> AlertViewModel {
+    AlertViewModel(title: "Falha na validação", message: "Senhas não conferem")
 }
