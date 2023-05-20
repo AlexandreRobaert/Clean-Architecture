@@ -20,7 +20,7 @@ final class SignupPresenterTest: XCTestCase {
 
     func test_signup_deve_mostrar_mensagem_se_nome_for_inválido() throws {
         
-        let (sut, alertViewSpy) = makeSut()
+        let (sut, alertViewSpy, _) = makeSut()
         let signupViewModel = SignupViewModel(name: nil, email: "any_mail", password: "any_password", passwordConfirmation: "any_password")
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelErrorName())
@@ -28,7 +28,7 @@ final class SignupPresenterTest: XCTestCase {
     
     func test_signup_deve_mostrar_mensagem_com_email_inválido() throws {
         
-        let (sut, alertViewSpy) = makeSut()
+        let (sut, alertViewSpy, _) = makeSut()
         let signupViewModel = SignupViewModel(name: "any_name", email: nil, password: "any_password", passwordConfirmation: "any_password")
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelWithoutEmail())
@@ -36,7 +36,7 @@ final class SignupPresenterTest: XCTestCase {
     
     func test_signup_deve_mostrar_mensagem_sem_uma_senha_obrigatoria() throws {
         
-        let (sut, alertViewSpy) = makeSut()
+        let (sut, alertViewSpy, _) = makeSut()
         let signupViewModel = SignupViewModel(name: "any_name", email: "any_mail", password: nil, passwordConfirmation: nil)
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelWithoutPassword())
@@ -44,10 +44,27 @@ final class SignupPresenterTest: XCTestCase {
     
     func test_signup_deve_mostrar_mensagem_com_senha_nao_confere_com_repete_senha() throws {
         
-        let (sut, alertViewSpy) = makeSut()
+        let (sut, alertViewSpy, _) = makeSut()
         let signupViewModel = SignupViewModel(name: "any_name", email: "any_mail", password: "12345", passwordConfirmation: "xxxxx")
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelNotMatch())
+    }
+    
+    func test_signup_deve_chamar_o_mesmo_email_no_validator() throws {
+        
+        let (sut, _, emailValidatorSpy) = makeSut()
+        let signupViewModel = SignupViewModel(name: "any_name", email: "email_valido@gmail.com", password: "12345", passwordConfirmation: "12345")
+        sut.signUp(viewModel: signupViewModel)
+        XCTAssertEqual(emailValidatorSpy.email, signupViewModel.email)
+    }
+    
+    func test_signup_email_invalido() throws {
+        
+        let (sut, alertViewSpy, emailValidatorSpy) = makeSut()
+        let signupViewModel = SignupViewModel(name: "any_name", email: "invalid_email", password: "12345", passwordConfirmation: "12345")
+        emailValidatorSpy.isValid = false
+        sut.signUp(viewModel: signupViewModel)
+        XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelInvalidEmail())
     }
 
 //    func testPerformanceExample() throws {
@@ -69,9 +86,21 @@ extension SignupPresenterTest {
         }
     }
     
-    func makeSut() -> (sut: SignupPresenter, alertViewSpy: AlertViewSpy) {
+    class EmailValidatorSpy: EmailValidator {
+        
+        var isValid: Bool = true
+        var email: String?
+        func isValid(email: String) -> Bool {
+            self.email = email
+            return isValid
+        }
+    }
+    
+    func makeSut() -> (sut: SignupPresenter, alertViewSpy: AlertViewSpy, emailValidator: EmailValidatorSpy) {
         let alertViewSpy = AlertViewSpy()
-        return (SignupPresenter(alertView: alertViewSpy), alertViewSpy)
+        let emailValidatorSpy = EmailValidatorSpy()
+        let sut = SignupPresenter(alertView: alertViewSpy, emailValidator: emailValidatorSpy)
+        return (sut, alertViewSpy, emailValidatorSpy)
     }
 }
 
@@ -92,4 +121,8 @@ func makeAlertViewModelWithoutPassword() -> AlertViewModel {
 
 func makeAlertViewModelNotMatch() -> AlertViewModel {
     AlertViewModel(title: "Falha na validação", message: "Senhas não conferem")
+}
+
+func makeAlertViewModelInvalidEmail() -> AlertViewModel {
+    AlertViewModel(title: "Falha na validação", message: "Email inválido")
 }

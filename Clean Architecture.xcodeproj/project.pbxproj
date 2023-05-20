@@ -15,6 +15,7 @@
 		AC6655C22A1981DE0032E58F /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84E926B602FE00AC7B05 /* Domain.framework */; };
 		AC6655C32A1981DE0032E58F /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84E926B602FE00AC7B05 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AC6655C92A1982900032E58F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6655C82A1982900032E58F /* AlertView.swift */; };
+		AC6655CD2A1986CD0032E58F /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6655CC2A1986CD0032E58F /* EmailValidator.swift */; };
 		AC6A84F226B603AE00AC7B05 /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A84F126B603AE00AC7B05 /* AddAccount.swift */; };
 		AC6A84F426B606B700AC7B05 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A84F326B606B700AC7B05 /* AccountModel.swift */; };
 		AC6A850326B6071600AC7B05 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84FA26B6071600AC7B05 /* Data.framework */; };
@@ -149,6 +150,7 @@
 		AC22F90729F58F2B00256AE6 /* Data+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+extension.swift"; sourceTree = "<group>"; };
 		AC22F90A29F5902D00256AE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC6655C82A1982900032E58F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		AC6655CC2A1986CD0032E58F /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
 		AC6A84E926B602FE00AC7B05 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC6A84EC26B602FE00AC7B05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC6A84F126B603AE00AC7B05 /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
@@ -295,6 +297,14 @@
 			path = Presenters;
 			sourceTree = "<group>";
 		};
+		AC6655CE2A1986D10032E58F /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				AC6655CC2A1986CD0032E58F /* EmailValidator.swift */,
+			);
+			path = Validators;
+			sourceTree = "<group>";
+		};
 		AC6A84CF26B602CE00AC7B05 = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +432,7 @@
 			children = (
 				AC6655C72A1982860032E58F /* Views */,
 				AC6655CA2A1982AD0032E58F /* Presenters */,
+				AC6655CE2A1986D10032E58F /* Validators */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -839,6 +850,7 @@
 			files = (
 				ACC0A83C2A0886740051723C /* SignupPresenter.swift in Sources */,
 				AC6655C92A1982900032E58F /* AlertView.swift in Sources */,
+				AC6655CD2A1986CD0032E58F /* EmailValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

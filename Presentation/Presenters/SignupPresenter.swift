@@ -9,12 +9,15 @@ import Foundation
 
 public class SignupPresenter {
     private var alertView: AlertViewProtocol
+    private var emailValidator: EmailValidator
     
-    public init(alertView: AlertViewProtocol) {
+    public init(alertView: AlertViewProtocol, emailValidator: EmailValidator) {
         self.alertView = alertView
+        self.emailValidator = emailValidator
     }
     
     public func signUp(viewModel: SignupViewModel) {
+        
         guard let name = viewModel.name, !name.isEmpty else {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "Nome é obrigatório"))
             return
@@ -32,11 +35,16 @@ public class SignupPresenter {
             return
         }
         
-        guard let password = viewModel.password,
-              let passwordConfirmation = viewModel.passwordConfirmation,
-              password.elementsEqual(passwordConfirmation) else {
+        if let password = viewModel.password,
+           let passwordConfirmation = viewModel.passwordConfirmation,
+           !password.elementsEqual(passwordConfirmation) {
+            
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "Senhas não conferem"))
             return
+        }
+        
+        if !emailValidator.isValid(email: email) {
+            alertView.showMessage(viewModel: .init(title: "Falha na validação", message: "Email inválido"))
         }
     }
 }
