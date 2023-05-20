@@ -8,56 +8,6 @@
 import XCTest
 @testable import Presentation
 
-struct SignupViewModel {
-    let name: String?
-    let email: String?
-    let password: String?
-    let passwordConfirmation: String?
-}
-
-class SignupPresenter {
-    var alertView: AlertViewProtocol
-    
-    init(alertView: AlertViewProtocol) {
-        self.alertView = alertView
-    }
-    
-    func signUp(viewModel: SignupViewModel) {
-        guard let name = viewModel.name, !name.isEmpty else {
-            alertView.showMessage(viewModel: makeAlertViewModelErrorName())
-            return
-        }
-        
-        guard let email = viewModel.email, !email.isEmpty else {
-            alertView.showMessage(viewModel: makeAlertViewModelWithoutEmail())
-            return
-        }
-        
-        guard let password = viewModel.password, !password.isEmpty,
-              let passwordConfirmation = viewModel.passwordConfirmation,
-              !passwordConfirmation.isEmpty else {
-            alertView.showMessage(viewModel: makeAlertViewModelWithoutPassword())
-            return
-        }
-        
-        guard let password = viewModel.password,
-              let passwordConfirmation = viewModel.passwordConfirmation,
-              password.elementsEqual(passwordConfirmation) else {
-            alertView.showMessage(viewModel: makeAlertViewModelNotMatch())
-            return
-        }
-    }
-}
-
-protocol AlertViewProtocol {
-    func showMessage(viewModel: AlertViewModel)
-}
-
-struct AlertViewModel: Equatable {
-    let title: String
-    let message: String
-}
-
 final class SignupPresenterTest: XCTestCase {
 
     override func setUpWithError() throws {
@@ -137,7 +87,7 @@ func makeAlertViewModelWithoutEmail() -> AlertViewModel {
 }
 
 func makeAlertViewModelWithoutPassword() -> AlertViewModel {
-    AlertViewModel(title: "Falha na validação", message: "Senha é obrigatória")
+    AlertViewModel(title: "Falha na validação", message: "Senha/Confirmar Senha é obrigatória")
 }
 
 func makeAlertViewModelNotMatch() -> AlertViewModel {
