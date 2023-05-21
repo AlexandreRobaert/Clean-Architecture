@@ -20,7 +20,8 @@ final class SignupPresenterTest: XCTestCase {
 
     func test_signup_deve_mostrar_mensagem_se_nome_for_inválido() throws {
         
-        let (sut, alertViewSpy, _) = makeSut()
+        let alertViewSpy = AlertViewSpy()
+        let sut = makeSut(alertView: alertViewSpy)
         let signupViewModel = SignupViewModel(name: nil, email: "any_mail", password: "any_password", passwordConfirmation: "any_password")
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelErrorName())
@@ -28,7 +29,8 @@ final class SignupPresenterTest: XCTestCase {
     
     func test_signup_deve_mostrar_mensagem_com_email_inválido() throws {
         
-        let (sut, alertViewSpy, _) = makeSut()
+        let alertViewSpy = AlertViewSpy()
+        let sut = makeSut(alertView: alertViewSpy)
         let signupViewModel = SignupViewModel(name: "any_name", email: nil, password: "any_password", passwordConfirmation: "any_password")
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelWithoutEmail())
@@ -36,7 +38,8 @@ final class SignupPresenterTest: XCTestCase {
     
     func test_signup_deve_mostrar_mensagem_sem_uma_senha_obrigatoria() throws {
         
-        let (sut, alertViewSpy, _) = makeSut()
+        let alertViewSpy = AlertViewSpy()
+        let sut = makeSut(alertView: alertViewSpy)
         let signupViewModel = SignupViewModel(name: "any_name", email: "any_mail", password: nil, passwordConfirmation: nil)
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelWithoutPassword())
@@ -44,7 +47,8 @@ final class SignupPresenterTest: XCTestCase {
     
     func test_signup_deve_mostrar_mensagem_com_senha_nao_confere_com_repete_senha() throws {
         
-        let (sut, alertViewSpy, _) = makeSut()
+        let alertViewSpy = AlertViewSpy()
+        let sut = makeSut(alertView: alertViewSpy)
         let signupViewModel = SignupViewModel(name: "any_name", email: "any_mail", password: "12345", passwordConfirmation: "xxxxx")
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelNotMatch())
@@ -52,15 +56,17 @@ final class SignupPresenterTest: XCTestCase {
     
     func test_signup_deve_chamar_o_mesmo_email_no_validator() throws {
         
-        let (sut, _, emailValidatorSpy) = makeSut()
+        let emailValidatorSpy = EmailValidatorSpy()
+        let sut = makeSut(emailValidator: emailValidatorSpy)
         let signupViewModel = SignupViewModel(name: "any_name", email: "email_valido@gmail.com", password: "12345", passwordConfirmation: "12345")
         sut.signUp(viewModel: signupViewModel)
         XCTAssertEqual(emailValidatorSpy.email, signupViewModel.email)
     }
     
     func test_signup_email_invalido() throws {
-        
-        let (sut, alertViewSpy, emailValidatorSpy) = makeSut()
+        let alertViewSpy = AlertViewSpy()
+        let emailValidatorSpy = EmailValidatorSpy()
+        let sut = makeSut(alertView: alertViewSpy, emailValidator: emailValidatorSpy)
         let signupViewModel = SignupViewModel(name: "any_name", email: "invalid_email", password: "12345", passwordConfirmation: "12345")
         emailValidatorSpy.isValid = false
         sut.signUp(viewModel: signupViewModel)
@@ -96,11 +102,9 @@ extension SignupPresenterTest {
         }
     }
     
-    func makeSut() -> (sut: SignupPresenter, alertViewSpy: AlertViewSpy, emailValidator: EmailValidatorSpy) {
-        let alertViewSpy = AlertViewSpy()
-        let emailValidatorSpy = EmailValidatorSpy()
-        let sut = SignupPresenter(alertView: alertViewSpy, emailValidator: emailValidatorSpy)
-        return (sut, alertViewSpy, emailValidatorSpy)
+    func makeSut(alertView: AlertViewSpy = AlertViewSpy(),
+                 emailValidator: EmailValidatorSpy = EmailValidatorSpy()) -> SignupPresenter {
+        return SignupPresenter(alertView: alertView, emailValidator: emailValidator)
     }
 }
 
