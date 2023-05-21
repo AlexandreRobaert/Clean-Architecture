@@ -6,52 +6,56 @@
 //
 
 import Foundation
+import Domain
 
 public class SignupPresenter {
-    private var alertView: AlertViewProtocol
-    private var emailValidator: EmailValidator
+    private let alertView: AlertViewProtocol
+    private let emailValidator: EmailValidator
+    private let addAccount: AddAccount
     
-    public init(alertView: AlertViewProtocol, emailValidator: EmailValidator) {
+    public init(alertView: AlertViewProtocol, emailValidator: EmailValidator, addAccount: AddAccount) {
         self.alertView = alertView
         self.emailValidator = emailValidator
+        self.addAccount = addAccount
     }
     
     public func signUp(viewModel: SignupViewModel) {
         
         let result = validate(signupViewModel: viewModel)
-        if result.isValid {
-            // Adiciona Usuário
+        if let addAccountModel = result.addAccountModel {
+            addAccount.add(addAccountModel: addAccountModel) { _ in }
         } else if let alertViewModel = result.alertViewModel {
             alertView.showMessage(viewModel: alertViewModel)
         }
     }
     
-    private func validate(signupViewModel: SignupViewModel) -> (isValid: Bool, alertViewModel: AlertViewModel?) {
+    private func validate(signupViewModel: SignupViewModel) -> (addAccountModel: AddAccountModel?, alertViewModel: AlertViewModel?) {
         guard let name = signupViewModel.name, !name.isEmpty else {
-            return (false, AlertViewModel(title: "Falha na validação", message: "Nome é obrigatório"))
+            return (nil, AlertViewModel(title: "Falha na validação", message: "Nome é obrigatório"))
         }
         
         guard let email = signupViewModel.email, !email.isEmpty else {
-            return (false, AlertViewModel(title: "Falha na validação", message: "Email é obrigatório"))
+            return (nil, AlertViewModel(title: "Falha na validação", message: "Email é obrigatório"))
         }
         
         guard let password = signupViewModel.password, !password.isEmpty,
               let passwordConfirmation = signupViewModel.passwordConfirmation,
               !passwordConfirmation.isEmpty else {
-            return (false, AlertViewModel(title: "Falha na validação", message: "Senha/Confirmar Senha é obrigatória"))
+            return (nil, AlertViewModel(title: "Falha na validação", message: "Senha/Confirmar Senha é obrigatória"))
         }
         
         if let password = signupViewModel.password,
            let passwordConfirmation = signupViewModel.passwordConfirmation,
            !password.elementsEqual(passwordConfirmation) {
             
-            return (false, AlertViewModel(title: "Falha na validação", message: "Senhas não conferem"))
+            return (nil, AlertViewModel(title: "Falha na validação", message: "Senhas não conferem"))
         }
         
         if !emailValidator.isValid(email: email) {
-            return (false, AlertViewModel(title: "Falha na validação", message: "Email inválido"))
+            return (nil, AlertViewModel(title: "Falha na validação", message: "Email inválido"))
         }
-        return (true, nil)
+        let addAccountModel = AddAccountModel(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation)
+        return (addAccountModel, nil)
     }
 }
 

@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import Presentation
+import Domain
 
 final class SignupPresenterTest: XCTestCase {
 
@@ -68,6 +69,13 @@ final class SignupPresenterTest: XCTestCase {
         sut.signUp(viewModel: makeSignupViewModel())
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelInvalidEmail())
     }
+    
+    func test_signup_deve_chamar_addAccount_com_dados_corretos() throws {
+        let addAccountSpy = AddAccountSpy()
+        let sut = makeSut(addAccountSpy: addAccountSpy)
+        sut.signUp(viewModel: makeSignupViewModel())
+        XCTAssertEqual(addAccountSpy.addAccountModel, makeAddAccountModel())
+    }
 
 //    func testPerformanceExample() throws {
 //        // This is an example of a performance test case.
@@ -98,15 +106,23 @@ extension SignupPresenterTest {
         }
     }
     
+    class AddAccountSpy: AddAccount {
+        var addAccountModel: AddAccountModel?
+        func add(addAccountModel: AddAccountModel, completion: @escaping (Result<AccountModel, DomainError>) -> Void) {
+            self.addAccountModel = addAccountModel
+        }
+    }
+    
     func makeSut(alertView: AlertViewSpy = AlertViewSpy(),
-                 emailValidator: EmailValidatorSpy = EmailValidatorSpy()) -> SignupPresenter {
-        return SignupPresenter(alertView: alertView, emailValidator: emailValidator)
+                 emailValidator: EmailValidatorSpy = EmailValidatorSpy(),
+                 addAccountSpy: AddAccountSpy = AddAccountSpy()) -> SignupPresenter {
+        return SignupPresenter(alertView: alertView, emailValidator: emailValidator, addAccount: addAccountSpy)
     }
     
     func makeSignupViewModel(name: String? = "any_name",
                              email: String? = "email_valido@gmail.com",
-                             password: String? = "12345",
-                             passwordConfirmation: String? = "12345") -> SignupViewModel {
+                             password: String? = "123456",
+                             passwordConfirmation: String? = "123456") -> SignupViewModel {
         
         return SignupViewModel(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation)
     }
