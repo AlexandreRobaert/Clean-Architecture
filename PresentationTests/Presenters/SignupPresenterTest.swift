@@ -80,6 +80,15 @@ final class SignupPresenterTest: XCTestCase {
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelFailureAddAccount())
     }
     
+    func test_signup_deve_mostrar_mensagem_com_sucesso_no_add_do_usecase() throws {
+        let alertViewSpy = AlertViewSpy()
+        let addAccountSpy = AddAccountSpy()
+        let sut = makeSut(alertView: alertViewSpy, addAccountSpy: addAccountSpy)
+        sut.signUp(viewModel: makeAddAccountModel())
+        addAccountSpy.complete(accountModel: makeAccountModel())
+        XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelAddAccountSucceeded())
+    }
+    
     func test_signup_deve_mostrar_mostrar_loading_depois_de_chamar_signUp() throws {
         let loadingView = LoadingViewSpy()
         let sut = makeSut(loadingViewSpy: loadingView)
@@ -173,5 +182,9 @@ extension SignupPresenterTest {
     
     func makeAlertViewModelFailureAddAccount() -> AlertViewModel {
         AlertViewModel(title: "Erro", message: "Falha ao adicionar usuário")
+    }
+    
+    func makeAlertViewModelAddAccountSucceeded() -> AlertViewModel {
+        AlertViewModel(title: "Sucesso!", message: "Usuário adicionado com Sucesso!")
     }
 }

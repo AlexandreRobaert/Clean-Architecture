@@ -33,7 +33,7 @@ class SignupPresenter {
                 
                 switch result {
                 case .success:
-                    break
+                    self.alertView.showMessage(viewModel: .init(title: "Sucesso!", message: "Usuário adicionado com Sucesso!"))
                 case .failure:
                     self.alertView.showMessage(viewModel: .init(title: "Erro", message: "Falha ao adicionar usuário"))
                 }
