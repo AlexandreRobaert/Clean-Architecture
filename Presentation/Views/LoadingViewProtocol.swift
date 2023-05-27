@@ -7,7 +7,6 @@
 
 import Foundation
 
-protocol LoadingViewProtocol {
-    
+public protocol LoadingViewProtocol {
     var isLoading: Bool { get set }
 }

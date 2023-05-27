@@ -7,7 +7,6 @@
 
 import Foundation
 
-protocol EmailValidatorProtocol {
-    
+public protocol EmailValidatorProtocol {
     func isValid(email: String) -> Bool
 }

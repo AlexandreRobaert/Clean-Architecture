@@ -102,46 +102,6 @@ final class SignupPresenterTest: XCTestCase {
 
 extension SignupPresenterTest {
     
-    class AlertViewSpy: AlertViewProtocol {
-        var viewModel: AlertViewModel?
-        
-        func showMessage(viewModel: AlertViewModel) {
-            self.viewModel = viewModel
-        }
-    }
-    
-    class EmailValidatorSpy: EmailValidatorProtocol {
-        
-        var isValid: Bool = true
-        var email: String?
-        func isValid(email: String) -> Bool {
-            self.email = email
-            return isValid
-        }
-    }
-    
-    class LoadingViewSpy: LoadingViewProtocol {
-        var isLoading: Bool = false
-    }
-    
-    class AddAccountSpy: AddAccountProtocol {
-        var addAccountModel: AddAccountModel?
-        private var completion: ((Result<AccountModel, DomainError>) -> Void)?
-        
-        func add(addAccountModel: AddAccountModel, completion: @escaping (Result<AccountModel, DomainError>) -> Void) {
-            self.addAccountModel = addAccountModel
-            self.completion = completion
-        }
-        
-        func complete(error: DomainError) {
-            self.completion?(.failure(error))
-        }
-        
-        func complete(accountModel: AccountModel) {
-            self.completion?(.success(accountModel))
-        }
-    }
-    
     func makeSut(alertView: AlertViewSpy = AlertViewSpy(),
                  emailValidator: EmailValidatorSpy = EmailValidatorSpy(),
                  addAccountSpy: AddAccountSpy = AddAccountSpy(),
@@ -152,33 +112,5 @@ extension SignupPresenterTest {
                                   emailValidator: emailValidator, addAccount: addAccountSpy)
         checkMemoryLeak(instance: sut, file: file, line: line)
         return sut
-    }
-    
-    func makeAlertViewModelErrorName() -> AlertViewModel {
-        AlertViewModel(title: "Falha na validação", message: "Nome é obrigatório")
-    }
-
-    func makeAlertViewModelWithoutEmail() -> AlertViewModel {
-        AlertViewModel(title: "Falha na validação", message: "Email é obrigatório")
-    }
-
-    func makeAlertViewModelWithoutPassword() -> AlertViewModel {
-        AlertViewModel(title: "Falha na validação", message: "Senha/Confirmar Senha é obrigatória")
-    }
-
-    func makeAlertViewModelNotMatch() -> AlertViewModel {
-        AlertViewModel(title: "Falha na validação", message: "Senhas não conferem")
-    }
-
-    func makeAlertViewModelInvalidEmail() -> AlertViewModel {
-        AlertViewModel(title: "Falha na validação", message: "Email inválido")
-    }
-    
-    func makeAlertViewModelFailureAddAccount() -> AlertViewModel {
-        AlertViewModel(title: "Erro", message: "Falha ao adicionar usuário")
-    }
-    
-    func makeAlertViewModelAddAccountSucceeded() -> AlertViewModel {
-        AlertViewModel(title: "Sucesso!", message: "Usuário adicionado com Sucesso!")
     }
 }
