@@ -89,18 +89,12 @@ final class SignupPresenterTest: XCTestCase {
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelAddAccountSucceeded())
     }
     
-    func test_signup_deve_mostrar_mostrar_loading_depois_de_chamar_signUp() throws {
-        let loadingView = LoadingViewSpy()
-        let sut = makeSut(loadingViewSpy: loadingView)
-        sut.signUp(viewModel: makeAddAccountModel())
-        XCTAssertEqual(loadingView.isLoading, true)
-    }
-    
-    func test_signup_deve_mostrar_ocultar_loading_depois_de_chamar_signUp() throws {
+    func test_signup_deve_mostrar_e_ocultar_loading_depois_de_chamar_signUp() throws {
         let addAccountSpy = AddAccountSpy()
         let loadingView = LoadingViewSpy()
         let sut = makeSut(addAccountSpy: addAccountSpy, loadingViewSpy: loadingView)
         sut.signUp(viewModel: makeAddAccountModel())
+        XCTAssertEqual(loadingView.isLoading, true)
         addAccountSpy.complete(error: .unexpected)
         XCTAssertEqual(loadingView.isLoading, false)
     }
@@ -116,7 +110,7 @@ extension SignupPresenterTest {
         }
     }
     
-    class EmailValidatorSpy: EmailValidator {
+    class EmailValidatorSpy: EmailValidatorProtocol {
         
         var isValid: Bool = true
         var email: String?
@@ -130,7 +124,7 @@ extension SignupPresenterTest {
         var isLoading: Bool = false
     }
     
-    class AddAccountSpy: AddAccount {
+    class AddAccountSpy: AddAccountProtocol {
         var addAccountModel: AddAccountModel?
         private var completion: ((Result<AccountModel, DomainError>) -> Void)?
         

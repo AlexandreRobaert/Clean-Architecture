@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol AddAccount {
+public protocol AddAccountProtocol {
     func add(addAccountModel: AddAccountModel, completion: @escaping (Result<AccountModel, DomainError>) -> Void)
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 import Domain
 
-public final class RemoteAddAccount: AddAccount {
+public final class RemoteAddAccount: AddAccountProtocol {
     private let url: URL
     private let httpClient: HttpPostClient
     

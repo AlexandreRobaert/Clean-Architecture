@@ -11,11 +11,11 @@ import Domain
 class SignupPresenter {
     private let alertView: AlertViewProtocol
     private var loadingView: LoadingViewProtocol
-    private let emailValidator: EmailValidator
-    private let addAccount: AddAccount
+    private let emailValidator: EmailValidatorProtocol
+    private let addAccount: AddAccountProtocol
     
     init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol,
-         emailValidator: EmailValidator, addAccount: AddAccount) {
+         emailValidator: EmailValidatorProtocol, addAccount: AddAccountProtocol) {
         self.alertView = alertView
         self.loadingView = loadingView
         self.emailValidator = emailValidator
@@ -26,17 +26,16 @@ class SignupPresenter {
         if let messageError = validate(addAccountViewModel: viewModel) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: messageError))
         } else {
-            loadingView.isLoading.toggle()
+            loadingView.isLoading = true
             addAccount.add(addAccountModel: viewModel) { [weak self] result in
                 guard let self else { return }
-                self.loadingView.isLoading.toggle()
-                
                 switch result {
                 case .success:
                     self.alertView.showMessage(viewModel: .init(title: "Sucesso!", message: "Usuário adicionado com Sucesso!"))
                 case .failure:
                     self.alertView.showMessage(viewModel: .init(title: "Erro", message: "Falha ao adicionar usuário"))
                 }
+                self.loadingView.isLoading = false
             }
         }
     }
