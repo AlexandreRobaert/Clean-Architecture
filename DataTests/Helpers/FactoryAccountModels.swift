@@ -8,8 +8,8 @@
 import Foundation
 import Domain
 
-func makeAddAccountModel()-> AddAccountModel {
-    return AddAccountModel(name: "any_name", email: "email_valido@gmail.com", password: "123456", passwordConfirmation: "123456")
+func makeAddAccountModel(name: String = "any_name", email: String = "email_valido@gmail.com", password: String = "123456", passwordConfirmation: String = "123456")-> AddAccountModel {
+    return AddAccountModel(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation)
 }
 
 func makeAccountModel()-> AccountModel {
