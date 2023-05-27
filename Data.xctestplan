@@ -1,11 +1,15 @@
 {
   "configurations" : [
+    {
+      "id" : "4104CDDF-B5B4-44A5-B6D9-81127AB8BF77",
+      "name" : "Configuration 1",
+      "options" : {
 
+      }
+    }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
-    "testTimeoutsEnabled" : true,
-    "threadSanitizerEnabled" : true
+
   },
   "testTargets" : [
     {

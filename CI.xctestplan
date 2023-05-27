@@ -28,6 +28,7 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Clean Architecture.xcodeproj",
         "identifier" : "AC6A850126B6071600AC7B05",
@@ -35,10 +36,27 @@
       }
     },
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Clean Architecture.xcodeproj",
         "identifier" : "ACFDD01E29FE029A00FC2EFD",
         "name" : "InfraTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Clean Architecture.xcodeproj",
+        "identifier" : "ACC0A82C2A0885F80051723C",
+        "name" : "PresentationTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Clean Architecture.xcodeproj",
+        "identifier" : "ACC0A8102A0868870051723C",
+        "name" : "UseCasesIntegrationTests"
       }
     }
   ],

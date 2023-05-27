@@ -171,8 +171,6 @@
 		AC6A851726B72FE100AC7B05 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AC6A851926B7355B00AC7B05 /* RemoteAddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccount.swift; sourceTree = "<group>"; };
 		AC6A851B26B7358A00AC7B05 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
-		ACC0A80A2A08650E0051723C /* Infra.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Infra.xctestplan; sourceTree = "<group>"; };
-		ACC0A80B2A08655D0051723C /* Data.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Data.xctestplan; sourceTree = "<group>"; };
 		ACC0A80C2A0866A50051723C /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 		ACC0A8112A0868870051723C /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC0A8132A0868870051723C /* AddAccountIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountIntegrationTests.swift; sourceTree = "<group>"; };
@@ -188,6 +186,8 @@
 		ACEFD0402A22BF5200CB83F0 /* AddAccountSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountSpy.swift; sourceTree = "<group>"; };
 		ACEFD0422A22BFE300CB83F0 /* LoadingViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSpy.swift; sourceTree = "<group>"; };
 		ACEFD0452A22C09E00CB83F0 /* TestFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactories.swift; sourceTree = "<group>"; };
+		ACEFD04B2A22C7F800CB83F0 /* Infra.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Infra.xctestplan; sourceTree = "<group>"; };
+		ACEFD04D2A22C91200CB83F0 /* Data.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = Data.xctestplan; sourceTree = SOURCE_ROOT; };
 		ACFDCFFD29FDD54200FC2EFD /* XCTest+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+extensions.swift"; sourceTree = "<group>"; };
 		ACFDD00229FDD64D00FC2EFD /* HttpClienteSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClienteSpy.swift; sourceTree = "<group>"; };
 		ACFDD00929FDD7A100FC2EFD /* Infra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -373,6 +373,7 @@
 				AC6A852026B7362400AC7B05 /* UseCases */,
 				AC6A851F26B7361800AC7B05 /* Http */,
 				AC22F90929F58F3800256AE6 /* Helpers */,
+				ACEFD04D2A22C91200CB83F0 /* Data.xctestplan */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -380,7 +381,6 @@
 		AC6A850626B6071600AC7B05 /* DataTests */ = {
 			isa = PBXGroup;
 			children = (
-				ACC0A80B2A08655D0051723C /* Data.xctestplan */,
 				ACFDD00129FDD63E00FC2EFD /* Http */,
 				ACFDCFFC29FDD50900FC2EFD /* Helpers */,
 				AC6A852126B7366200AC7B05 /* UseCases */,
@@ -511,6 +511,7 @@
 		ACFDD00A29FDD7A100FC2EFD /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				ACEFD04B2A22C7F800CB83F0 /* Infra.xctestplan */,
 				AC0287BC2A06EDBD004E80F4 /* Http */,
 			);
 			path = Infra;
@@ -519,7 +520,6 @@
 		ACFDD02029FE029A00FC2EFD /* InfraTests */ = {
 			isa = PBXGroup;
 			children = (
-				ACC0A80A2A08650E0051723C /* Infra.xctestplan */,
 				AC0287C12A06EFB6004E80F4 /* Http */,
 			);
 			path = InfraTests;

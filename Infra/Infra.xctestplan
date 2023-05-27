@@ -1,13 +1,19 @@
 {
   "configurations" : [
+    {
+      "id" : "0872BF98-5E04-46B8-B962-43D9B39052A8",
+      "name" : "Test Scheme Action",
+      "options" : {
 
+      }
+    }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
-    "threadSanitizerEnabled" : true
+    "codeCoverage" : false
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Clean Architecture.xcodeproj",
         "identifier" : "ACFDD01E29FE029A00FC2EFD",
