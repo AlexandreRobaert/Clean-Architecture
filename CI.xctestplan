@@ -58,6 +58,13 @@
         "identifier" : "ACC0A8102A0868870051723C",
         "name" : "UseCasesIntegrationTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Clean Architecture.xcodeproj",
+        "identifier" : "ACEFD0592A22CC0300CB83F0",
+        "name" : "UIphoneTests"
+      }
     }
   ],
   "version" : 1
