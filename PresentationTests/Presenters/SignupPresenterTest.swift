@@ -20,7 +20,6 @@ final class SignupPresenterTest: XCTestCase {
     }
 
     func test_signup_deve_mostrar_mensagem_se_nome_for_inválido() throws {
-        
         let alertViewSpy = AlertViewSpy()
         let sut = makeSut(alertView: alertViewSpy)
         sut.signUp(viewModel: makeAddAccountModel(name: ""))
@@ -28,7 +27,6 @@ final class SignupPresenterTest: XCTestCase {
     }
     
     func test_signup_deve_mostrar_mensagem_com_email_inválido_quando_sem_email() throws {
-        
         let alertViewSpy = AlertViewSpy()
         let sut = makeSut(alertView: alertViewSpy)
         sut.signUp(viewModel: makeAddAccountModel(email: ""))
@@ -36,7 +34,6 @@ final class SignupPresenterTest: XCTestCase {
     }
     
     func test_signup_deve_mostrar_mensagem_sem_uma_senha_obrigatoria() throws {
-        
         let alertViewSpy = AlertViewSpy()
         let sut = makeSut(alertView: alertViewSpy)
         sut.signUp(viewModel: makeAddAccountModel(password: ""))
@@ -44,7 +41,6 @@ final class SignupPresenterTest: XCTestCase {
     }
     
     func test_signup_deve_mostrar_mensagem_com_senha_nao_confere_com_repete_senha() throws {
-        
         let alertViewSpy = AlertViewSpy()
         let sut = makeSut(alertView: alertViewSpy)
         sut.signUp(viewModel: makeAddAccountModel(password: "abc", passwordConfirmation: "cba"))
@@ -52,7 +48,6 @@ final class SignupPresenterTest: XCTestCase {
     }
     
     func test_signup_deve_chamar_o_mesmo_email_no_validator() throws {
-        
         let emailValidatorSpy = EmailValidatorSpy()
         let sut = makeSut(emailValidator: emailValidatorSpy)
         let addAccountModel = makeAddAccountModel()
@@ -77,13 +72,28 @@ final class SignupPresenterTest: XCTestCase {
     }
     
     func test_signup_deve_mostrar_mensagem_com_falha_no_add_do_usecase() throws {
-        
         let alertViewSpy = AlertViewSpy()
         let addAccountSpy = AddAccountSpy()
         let sut = makeSut(alertView: alertViewSpy, addAccountSpy: addAccountSpy)
         sut.signUp(viewModel: makeAddAccountModel())
         addAccountSpy.complete(error: .unexpected)
         XCTAssertEqual(alertViewSpy.viewModel, makeAlertViewModelFailureAddAccount())
+    }
+    
+    func test_signup_deve_mostrar_mostrar_loading_depois_de_chamar_signUp() throws {
+        let loadingView = LoadingViewSpy()
+        let sut = makeSut(loadingViewSpy: loadingView)
+        sut.signUp(viewModel: makeAddAccountModel())
+        XCTAssertEqual(loadingView.isLoading, true)
+    }
+    
+    func test_signup_deve_mostrar_ocultar_loading_depois_de_chamar_signUp() throws {
+        let addAccountSpy = AddAccountSpy()
+        let loadingView = LoadingViewSpy()
+        let sut = makeSut(addAccountSpy: addAccountSpy, loadingViewSpy: loadingView)
+        sut.signUp(viewModel: makeAddAccountModel())
+        addAccountSpy.complete(error: .unexpected)
+        XCTAssertEqual(loadingView.isLoading, false)
     }
 }
 
@@ -107,6 +117,10 @@ extension SignupPresenterTest {
         }
     }
     
+    class LoadingViewSpy: LoadingViewProtocol {
+        var isLoading: Bool = false
+    }
+    
     class AddAccountSpy: AddAccount {
         var addAccountModel: AddAccountModel?
         private var completion: ((Result<AccountModel, DomainError>) -> Void)?
@@ -128,8 +142,11 @@ extension SignupPresenterTest {
     func makeSut(alertView: AlertViewSpy = AlertViewSpy(),
                  emailValidator: EmailValidatorSpy = EmailValidatorSpy(),
                  addAccountSpy: AddAccountSpy = AddAccountSpy(),
+                 loadingViewSpy: LoadingViewSpy = LoadingViewSpy(),
                  file: StaticString = #file, line: UInt = #line) -> SignupPresenter {
-        let sut = SignupPresenter(alertView: alertView, emailValidator: emailValidator, addAccount: addAccountSpy)
+        
+        let sut = SignupPresenter(alertView: alertView, loadingView: loadingViewSpy,
+                                  emailValidator: emailValidator, addAccount: addAccountSpy)
         checkMemoryLeak(instance: sut, file: file, line: line)
         return sut
     }

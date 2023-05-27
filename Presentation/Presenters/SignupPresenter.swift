@@ -8,23 +8,29 @@
 import Foundation
 import Domain
 
-public class SignupPresenter {
+class SignupPresenter {
     private let alertView: AlertViewProtocol
+    private var loadingView: LoadingViewProtocol
     private let emailValidator: EmailValidator
     private let addAccount: AddAccount
     
-    public init(alertView: AlertViewProtocol, emailValidator: EmailValidator, addAccount: AddAccount) {
+    init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol,
+         emailValidator: EmailValidator, addAccount: AddAccount) {
         self.alertView = alertView
+        self.loadingView = loadingView
         self.emailValidator = emailValidator
         self.addAccount = addAccount
     }
     
-    public func signUp(viewModel: AddAccountModel) {
+    func signUp(viewModel: AddAccountModel) {
         if let messageError = validate(addAccountViewModel: viewModel) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: messageError))
         } else {
+            loadingView.isLoading.toggle()
             addAccount.add(addAccountModel: viewModel) { [weak self] result in
                 guard let self else { return }
+                self.loadingView.isLoading.toggle()
+                
                 switch result {
                 case .success:
                     break

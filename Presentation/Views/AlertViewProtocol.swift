@@ -7,15 +7,15 @@
 
 import Foundation
 
-public protocol AlertViewProtocol {
+protocol AlertViewProtocol {
     func showMessage(viewModel: AlertViewModel)
 }
 
-public struct AlertViewModel: Equatable {
+struct AlertViewModel: Equatable {
     public let title: String
     public let message: String
     
-    public init(title: String, message: String) {
+    init(title: String, message: String) {
         self.title = title
         self.message = message
     }
