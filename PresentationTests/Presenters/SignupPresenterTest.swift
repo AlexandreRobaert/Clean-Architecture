@@ -6,8 +6,8 @@
 //
 
 import XCTest
-@testable import Presentation
 import Domain
+@testable import Presentation
 
 final class SignupPresenterTest: XCTestCase {
 

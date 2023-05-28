@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Presentation
 
 class AlertViewSpy: AlertViewProtocol {
     var viewModel: AlertViewModel?

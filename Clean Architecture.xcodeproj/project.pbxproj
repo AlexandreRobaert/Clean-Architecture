@@ -11,7 +11,12 @@
 		AC0287BF2A06EF7C004E80F4 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0287BD2A06EE24004E80F4 /* URLProtocolStub.swift */; };
 		AC0DE83C29FF24B1004E66F7 /* XCTest+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFDCFFD29FDD54200FC2EFD /* XCTest+extensions.swift */; };
 		AC0DE83E29FF2BF9004E66F7 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DE83D29FF2BF9004E66F7 /* Helpers.swift */; };
-		AC171CEF2A22CD4100760430 /* Fileinit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC171CEE2A22CD4100760430 /* Fileinit.swift */; };
+		AC171CF12A22D74900760430 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC171CF02A22D74900760430 /* SignupViewController.swift */; };
+		AC171CF52A22D90800760430 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC171CF42A22D90800760430 /* SignUp.storyboard */; };
+		AC171CF62A22DAFD00760430 /* AlertViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFD03C2A22BF1300CB83F0 /* AlertViewSpy.swift */; };
+		AC171CF82A22DFD000760430 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC0A8262A0885F80051723C /* Presentation.framework */; };
+		AC171CF92A22DFD000760430 /* Presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ACC0A8262A0885F80051723C /* Presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC171CFE2A22E00000760430 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC171CFD2A22E00000760430 /* UIKit.framework */; platformFilter = ios; };
 		AC22F90829F58F2B00256AE6 /* Data+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22F90729F58F2B00256AE6 /* Data+extension.swift */; };
 		AC5B40C42A1AC0D200633096 /* FactoryAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B40C32A1AC0D200633096 /* FactoryAccountModels.swift */; };
 		AC5B40C52A1AC0E600633096 /* FactoryAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B40C32A1AC0D200633096 /* FactoryAccountModels.swift */; };
@@ -37,7 +42,6 @@
 		ACC1489D29ECC94500ACDC30 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC1489C29ECC94500ACDC30 /* HttpError.swift */; };
 		ACEFD0382A225DAB00CB83F0 /* XCTest+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFDCFFD29FDD54200FC2EFD /* XCTest+extensions.swift */; };
 		ACEFD03A2A225F7B00CB83F0 /* LoadingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFD0392A225F7B00CB83F0 /* LoadingViewProtocol.swift */; };
-		ACEFD03D2A22BF1300CB83F0 /* AlertViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFD03C2A22BF1300CB83F0 /* AlertViewSpy.swift */; };
 		ACEFD0472A22C0BC00CB83F0 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFD0452A22C09E00CB83F0 /* TestFactories.swift */; };
 		ACEFD0482A22C1D800CB83F0 /* EmailValidatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFD03E2A22BF3400CB83F0 /* EmailValidatorSpy.swift */; };
 		ACEFD0492A22C1DB00CB83F0 /* LoadingViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFD0422A22BFE300CB83F0 /* LoadingViewSpy.swift */; };
@@ -54,6 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AC171CFA2A22DFD000760430 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC6A84D026B602CE00AC7B05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACC0A8252A0885F80051723C;
+			remoteInfo = Presentation;
+		};
 		AC6655C42A1981DE0032E58F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AC6A84D026B602CE00AC7B05 /* Project object */;
@@ -127,6 +138,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AC171CFC2A22DFD100760430 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AC171CF92A22DFD000760430 /* Presentation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AC6655C62A1981DE0032E58F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,7 +188,10 @@
 		AC0287BA2A06EC56004E80F4 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		AC0287BD2A06EE24004E80F4 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		AC0DE83D29FF2BF9004E66F7 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		AC171CEE2A22CD4100760430 /* Fileinit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fileinit.swift; sourceTree = "<group>"; };
+		AC171CF02A22D74900760430 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		AC171CF22A22D78A00760430 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AC171CF42A22D90800760430 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		AC171CFD2A22E00000760430 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		AC22F90729F58F2B00256AE6 /* Data+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+extension.swift"; sourceTree = "<group>"; };
 		AC22F90A29F5902D00256AE6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC5B40C32A1AC0D200633096 /* FactoryAccountModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryAccountModels.swift; sourceTree = "<group>"; };
@@ -261,6 +286,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC171CF82A22DFD000760430 /* Presentation.framework in Frameworks */,
+				AC171CFE2A22E00000760430 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +348,6 @@
 		AC6655C72A1982860032E58F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ACEFD03C2A22BF1300CB83F0 /* AlertViewSpy.swift */,
 				AC6655C82A1982900032E58F /* AlertViewProtocol.swift */,
 				ACEFD0392A225F7B00CB83F0 /* LoadingViewProtocol.swift */,
 			);
@@ -424,6 +450,8 @@
 		AC6A851126B6074500AC7B05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC171CFD2A22E00000760430 /* UIKit.framework */,
+				AC171CF22A22D78A00760430 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -509,6 +537,7 @@
 		ACEFD03B2A22BEFE00CB83F0 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				ACEFD03C2A22BF1300CB83F0 /* AlertViewSpy.swift */,
 				ACEFD03E2A22BF3400CB83F0 /* EmailValidatorSpy.swift */,
 				ACEFD0402A22BF5200CB83F0 /* AddAccountSpy.swift */,
 				ACEFD0422A22BFE300CB83F0 /* LoadingViewSpy.swift */,
@@ -527,7 +556,8 @@
 		ACEFD0542A22CC0300CB83F0 /* UIphone */ = {
 			isa = PBXGroup;
 			children = (
-				AC171CEE2A22CD4100760430 /* Fileinit.swift */,
+				AC171CF02A22D74900760430 /* SignupViewController.swift */,
+				AC171CF42A22D90800760430 /* SignUp.storyboard */,
 			);
 			path = UIphone;
 			sourceTree = "<group>";
@@ -737,10 +767,12 @@
 				ACEFD04F2A22CC0300CB83F0 /* Sources */,
 				ACEFD0502A22CC0300CB83F0 /* Frameworks */,
 				ACEFD0512A22CC0300CB83F0 /* Resources */,
+				AC171CFC2A22DFD100760430 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AC171CFB2A22DFD000760430 /* PBXTargetDependency */,
 			);
 			name = UIphone;
 			productName = UIphone;
@@ -930,6 +962,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC171CF52A22D90800760430 /* SignUp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1004,7 +1037,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACC0A83C2A0886740051723C /* SignupPresenter.swift in Sources */,
-				ACEFD03D2A22BF1300CB83F0 /* AlertViewSpy.swift in Sources */,
 				AC6655C92A1982900032E58F /* AlertViewProtocol.swift in Sources */,
 				AC6655CD2A1986CD0032E58F /* EmailValidatorProtocol.swift in Sources */,
 				ACEFD03A2A225F7B00CB83F0 /* LoadingViewProtocol.swift in Sources */,
@@ -1019,6 +1051,7 @@
 				ACEFD04A2A22C1DF00CB83F0 /* AddAccountSpy.swift in Sources */,
 				ACC0A8332A0885F80051723C /* SignupPresenterTest.swift in Sources */,
 				ACEFD0492A22C1DB00CB83F0 /* LoadingViewSpy.swift in Sources */,
+				AC171CF62A22DAFD00760430 /* AlertViewSpy.swift in Sources */,
 				ACEFD0482A22C1D800CB83F0 /* EmailValidatorSpy.swift in Sources */,
 				ACEFD0472A22C0BC00CB83F0 /* TestFactories.swift in Sources */,
 				ACEFD0382A225DAB00CB83F0 /* XCTest+extensions.swift in Sources */,
@@ -1029,7 +1062,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC171CEF2A22CD4100760430 /* Fileinit.swift in Sources */,
+				AC171CF12A22D74900760430 /* SignupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1062,6 +1095,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AC171CFB2A22DFD000760430 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACC0A8252A0885F80051723C /* Presentation */;
+			targetProxy = AC171CFA2A22DFD000760430 /* PBXContainerItemProxy */;
+		};
 		AC6655C52A1981DE0032E58F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AC6A84E826B602FE00AC7B05 /* Domain */;
@@ -1574,6 +1612,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/System/iOSSupport/System/Library/Frameworks",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1589,7 +1631,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robaert.alexandre.UIphone;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1612,6 +1654,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/System/iOSSupport/System/Library/Frameworks",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1627,7 +1673,7 @@
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robaert.alexandre.UIphone;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
