@@ -28,6 +28,7 @@ public final class SignupViewController: UIViewController {
     }
     
     private func configure() {
+        saveButton.layer.cornerRadius = 5.0
         saveButton.addTarget(self, action: #selector(saveButtonTap), for: .touchUpInside)
     }
     
@@ -49,6 +50,8 @@ extension SignupViewController: LoadingViewProtocol, AlertViewProtocol {
     }
     
     public func showMessage(viewModel: AlertViewModel) {
-        
+        let alertController = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
+        alertController.addAction(.init(title: "OK", style: .default))
+        present(alertController, animated: true)
     }
 }

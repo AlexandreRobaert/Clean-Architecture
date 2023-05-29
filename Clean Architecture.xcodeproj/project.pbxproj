@@ -33,6 +33,7 @@
 		AC6A851826B72FE100AC7B05 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A851726B72FE100AC7B05 /* Model.swift */; };
 		AC6A851A26B7355B00AC7B05 /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A851926B7355B00AC7B05 /* RemoteAddAccount.swift */; };
 		AC6A851C26B7358A00AC7B05 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A851B26B7358A00AC7B05 /* HttpPostClient.swift */; };
+		AC742AD72A242382004BE91C /* Test+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC742AD62A242382004BE91C /* Test+extensions.swift */; };
 		ACC0A8142A0868870051723C /* AddAccountIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0A8132A0868870051723C /* AddAccountIntegrationTests.swift */; };
 		ACC0A8152A0868870051723C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84E926B602FE00AC7B05 /* Domain.framework */; };
 		ACC0A82E2A0885F80051723C /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC0A8262A0885F80051723C /* Presentation.framework */; };
@@ -207,6 +208,7 @@
 		AC6A851726B72FE100AC7B05 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AC6A851926B7355B00AC7B05 /* RemoteAddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccount.swift; sourceTree = "<group>"; };
 		AC6A851B26B7358A00AC7B05 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
+		AC742AD62A242382004BE91C /* Test+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test+extensions.swift"; sourceTree = "<group>"; };
 		ACC0A80C2A0866A50051723C /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 		ACC0A8112A0868870051723C /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC0A8132A0868870051723C /* AddAccountIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountIntegrationTests.swift; sourceTree = "<group>"; };
@@ -498,6 +500,31 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
+		AC742AD42A24230F004BE91C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				AC171CF02A22D74900760430 /* SignupViewController.swift */,
+				AC171CF42A22D90800760430 /* SignUp.storyboard */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		AC742AD52A242323004BE91C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				ACEFD05F2A22CC0300CB83F0 /* SignupViewControllerTest.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		AC742AD82A242396004BE91C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AC742AD62A242382004BE91C /* Test+extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		ACC0A8122A0868870051723C /* UseCasesIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,8 +583,7 @@
 		ACEFD0542A22CC0300CB83F0 /* UIphone */ = {
 			isa = PBXGroup;
 			children = (
-				AC171CF02A22D74900760430 /* SignupViewController.swift */,
-				AC171CF42A22D90800760430 /* SignUp.storyboard */,
+				AC742AD42A24230F004BE91C /* Scenes */,
 			);
 			path = UIphone;
 			sourceTree = "<group>";
@@ -565,7 +591,8 @@
 		ACEFD05E2A22CC0300CB83F0 /* UIphoneTests */ = {
 			isa = PBXGroup;
 			children = (
-				ACEFD05F2A22CC0300CB83F0 /* SignupViewControllerTest.swift */,
+				AC742AD52A242323004BE91C /* Scenes */,
+				AC742AD82A242396004BE91C /* Helpers */,
 			);
 			path = UIphoneTests;
 			sourceTree = "<group>";
@@ -1071,6 +1098,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACEFD0602A22CC0300CB83F0 /* SignupViewControllerTest.swift in Sources */,
+				AC742AD72A242382004BE91C /* Test+extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
