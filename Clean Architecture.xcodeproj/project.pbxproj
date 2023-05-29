@@ -34,6 +34,7 @@
 		AC6A851A26B7355B00AC7B05 /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A851926B7355B00AC7B05 /* RemoteAddAccount.swift */; };
 		AC6A851C26B7358A00AC7B05 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A851B26B7358A00AC7B05 /* HttpPostClient.swift */; };
 		AC742AD72A242382004BE91C /* Test+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC742AD62A242382004BE91C /* Test+extensions.swift */; };
+		AC742ADA2A242A10004BE91C /* Data.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = AC742AD92A242A10004BE91C /* Data.xctestplan */; };
 		ACC0A8142A0868870051723C /* AddAccountIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC0A8132A0868870051723C /* AddAccountIntegrationTests.swift */; };
 		ACC0A8152A0868870051723C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84E926B602FE00AC7B05 /* Domain.framework */; };
 		ACC0A82E2A0885F80051723C /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC0A8262A0885F80051723C /* Presentation.framework */; };
@@ -209,6 +210,7 @@
 		AC6A851926B7355B00AC7B05 /* RemoteAddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccount.swift; sourceTree = "<group>"; };
 		AC6A851B26B7358A00AC7B05 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
 		AC742AD62A242382004BE91C /* Test+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test+extensions.swift"; sourceTree = "<group>"; };
+		AC742AD92A242A10004BE91C /* Data.xctestplan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Data.xctestplan; sourceTree = "<group>"; };
 		ACC0A80C2A0866A50051723C /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 		ACC0A8112A0868870051723C /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC0A8132A0868870051723C /* AddAccountIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountIntegrationTests.swift; sourceTree = "<group>"; };
@@ -225,7 +227,6 @@
 		ACEFD0422A22BFE300CB83F0 /* LoadingViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewSpy.swift; sourceTree = "<group>"; };
 		ACEFD0452A22C09E00CB83F0 /* TestFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactories.swift; sourceTree = "<group>"; };
 		ACEFD04B2A22C7F800CB83F0 /* Infra.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Infra.xctestplan; sourceTree = "<group>"; };
-		ACEFD04D2A22C91200CB83F0 /* Data.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Data.xctestplan; sourceTree = SOURCE_ROOT; };
 		ACEFD0532A22CC0300CB83F0 /* UIphone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIphone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACEFD05A2A22CC0300CB83F0 /* UIphoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIphoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACEFD05F2A22CC0300CB83F0 /* SignupViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewControllerTest.swift; sourceTree = "<group>"; };
@@ -430,11 +431,11 @@
 		AC6A84FB26B6071600AC7B05 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AC742AD92A242A10004BE91C /* Data.xctestplan */,
 				AC22F90A29F5902D00256AE6 /* Info.plist */,
 				AC6A852026B7362400AC7B05 /* UseCases */,
 				AC6A851F26B7361800AC7B05 /* Http */,
 				AC22F90929F58F3800256AE6 /* Helpers */,
-				ACEFD04D2A22C91200CB83F0 /* Data.xctestplan */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -954,6 +955,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC742ADA2A242A10004BE91C /* Data.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
