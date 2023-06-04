@@ -12,6 +12,8 @@ public final class EmailValidatorAdapter: EmailValidatorProtocol {
     
     private let pattern = "^[\\p{L}0-9!#$%&'*+\\/=?^_`{|}~-][\\p{L}0-9.!#$%&'*+\\/=?^_`{|}~-]{0,63}@[\\p{L}0-9-]+(?:\\.[\\p{L}0-9-]{2,7})*$"
     
+    public init() { }
+    
     public func isValid(email: String) -> Bool {
         let range = NSRange(location: 0, length: email.utf8.count)
         let regex = try! NSRegularExpression(pattern: pattern)
