@@ -1,56 +1,17 @@
 {
   "configurations" : [
     {
-      "id" : "C745C7CA-A5B6-4CB5-B8AA-B8DC5BCC67FA",
-      "name" : "Configuration 1",
+      "id" : "DD2D37C6-A8A9-4D6C-BE37-1FEC957D6D62",
+      "name" : "Test Scheme Action",
       "options" : {
-        "threadSanitizerEnabled" : true
+
       }
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : {
-      "targets" : [
-        {
-          "containerPath" : "container:Clean Architecture.xcodeproj",
-          "identifier" : "AC6A84F926B6071600AC7B05",
-          "name" : "Data"
-        },
-        {
-          "containerPath" : "container:Clean Architecture.xcodeproj",
-          "identifier" : "ACFDD00829FDD7A100FC2EFD",
-          "name" : "Infra"
-        }
-      ]
-    },
-    "testTimeoutsEnabled" : true,
-    "threadSanitizerEnabled" : true
+    "codeCoverage" : false
   },
   "testTargets" : [
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:Clean Architecture.xcodeproj",
-        "identifier" : "AC6A850126B6071600AC7B05",
-        "name" : "DataTests"
-      }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:Clean Architecture.xcodeproj",
-        "identifier" : "ACFDD01E29FE029A00FC2EFD",
-        "name" : "InfraTests"
-      }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:Clean Architecture.xcodeproj",
-        "identifier" : "ACC0A82C2A0885F80051723C",
-        "name" : "PresentationTests"
-      }
-    },
     {
       "parallelizable" : true,
       "target" : {
@@ -60,10 +21,39 @@
       }
     },
     {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Clean Architecture.xcodeproj",
+        "identifier" : "AC6A850126B6071600AC7B05",
+        "name" : "DataTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Clean Architecture.xcodeproj",
+        "identifier" : "ACFDD01E29FE029A00FC2EFD",
+        "name" : "InfraTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Clean Architecture.xcodeproj",
+        "identifier" : "ACC0A82C2A0885F80051723C",
+        "name" : "PresentationTests"
+      }
+    },
+    {
       "target" : {
         "containerPath" : "container:Clean Architecture.xcodeproj",
         "identifier" : "ACEFD0592A22CC0300CB83F0",
         "name" : "UIphoneTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Clean Architecture.xcodeproj",
+        "identifier" : "ACAA96412A2CE449001A4C36",
+        "name" : "ValidationsTests"
       }
     }
   ],
