@@ -27,6 +27,10 @@ public final class SignupViewController: UIViewController {
         configure()
     }
     
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     private func configure() {
         saveButton.layer.cornerRadius = 5.0
         saveButton.addTarget(self, action: #selector(saveButtonTap), for: .touchUpInside)
