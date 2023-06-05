@@ -26,7 +26,7 @@ public enum AppStoryboard: String {
     
     public func viewController<T>(viewController: T.Type) -> T where T: UIViewController {
         guard let viewController = instance.instantiateViewController(withIdentifier: String(describing: T.self)) as? T else {
-            fatalError("")
+            fatalError("ViewController \(String(describing: T.self)) não encontrada!")
         }
         return viewController
     }
