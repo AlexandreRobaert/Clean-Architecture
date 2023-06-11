@@ -12,12 +12,12 @@
 		<key>Data.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Domain.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>4</integer>
 		</dict>
 		<key>DomainTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -27,32 +27,27 @@
 		<key>Infra.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
-		</dict>
-		<key>Main.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Presentation.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<key>UIphone.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<key>UseCasesIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		</dict>
 		<key>Validations.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -63,6 +58,21 @@
 			<true/>
 		</dict>
 		<key>AC65C8622A08599400CB52E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC6A84E826B602FE00AC7B05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC6A84F926B6071600AC7B05</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC6A850126B6071600AC7B05</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -93,6 +103,36 @@
 			<true/>
 		</dict>
 		<key>ACC0A8102A0868870051723C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACC0A8252A0885F80051723C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACC0A82C2A0885F80051723C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACEFD0522A22CC0300CB83F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACEFD0592A22CC0300CB83F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACFDD00829FDD7A100FC2EFD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACFDD01E29FE029A00FC2EFD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
