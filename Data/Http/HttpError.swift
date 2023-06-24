@@ -9,6 +9,7 @@ import Foundation
 
 public enum HttpError: Error {
     case noConnectivityError
+    case noContent
     case badRequestError
     case serverError
     case parseError

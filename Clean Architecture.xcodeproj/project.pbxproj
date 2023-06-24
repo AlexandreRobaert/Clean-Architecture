@@ -34,6 +34,7 @@
 		AC6A851A26B7355B00AC7B05 /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A851926B7355B00AC7B05 /* RemoteAddAccount.swift */; };
 		AC6A851C26B7358A00AC7B05 /* HttpPostClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6A851B26B7358A00AC7B05 /* HttpPostClient.swift */; };
 		AC742AD72A242382004BE91C /* Test+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC742AD62A242382004BE91C /* Test+extensions.swift */; };
+		AC82725A2A4779AD00A64AC9 /* URLSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8272592A4779AD00A64AC9 /* URLSessionAdapter.swift */; };
 		ACAA96432A2CE44A001A4C36 /* Validations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACAA963B2A2CE449001A4C36 /* Validations.framework */; };
 		ACAA96482A2CE44A001A4C36 /* EmailValidatorAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA96472A2CE44A001A4C36 /* EmailValidatorAdapterTests.swift */; };
 		ACAA96512A2CE4C2001A4C36 /* EmailValidatorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA96502A2CE4C2001A4C36 /* EmailValidatorAdapter.swift */; };
@@ -315,6 +316,7 @@
 		AC6A851926B7355B00AC7B05 /* RemoteAddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccount.swift; sourceTree = "<group>"; };
 		AC6A851B26B7358A00AC7B05 /* HttpPostClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClient.swift; sourceTree = "<group>"; };
 		AC742AD62A242382004BE91C /* Test+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test+extensions.swift"; sourceTree = "<group>"; };
+		AC8272592A4779AD00A64AC9 /* URLSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAdapter.swift; sourceTree = "<group>"; };
 		ACAA963B2A2CE449001A4C36 /* Validations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Validations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAA96422A2CE449001A4C36 /* ValidationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValidationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACAA96472A2CE44A001A4C36 /* EmailValidatorAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorAdapterTests.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0287BA2A06EC56004E80F4 /* AlamofireAdapter.swift */,
+				AC8272592A4779AD00A64AC9 /* URLSessionAdapter.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1428,6 +1431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC82725A2A4779AD00A64AC9 /* URLSessionAdapter.swift in Sources */,
 				AC0287BB2A06EC56004E80F4 /* AlamofireAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1608,6 +1612,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1668,6 +1673,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

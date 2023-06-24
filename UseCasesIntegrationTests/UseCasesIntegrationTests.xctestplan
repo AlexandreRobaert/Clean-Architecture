@@ -45,13 +45,6 @@
     {
       "target" : {
         "containerPath" : "container:Clean Architecture.xcodeproj",
-        "identifier" : "ACEFD0592A22CC0300CB83F0",
-        "name" : "UIphoneTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Clean Architecture.xcodeproj",
         "identifier" : "ACAA96412A2CE449001A4C36",
         "name" : "ValidationsTests"
       }

@@ -13,24 +13,27 @@ class HttpClientSpy: HttpPostClient {
     var urls: [URL] = []
     var data: Data?
     var callsAccount = 0
-    var completion: ((Result<Data?, HttpError>) -> Void)?
+    var completionData: (data: Data?, error: HttpError?)
     
-    func post(to url: URL, with data: Data?, completion: @escaping (Result<Data?, HttpError>) -> Void) {
+    func post(to url: URL, with data: Data?) async throws -> Data {
         self.urls.append(url)
         self.data = data
         self.callsAccount += 1
-        self.completion = completion
+        guard let data = completionData.data else {
+            throw completionData.error ?? .noConnectivityError
+        }
+        return data
     }
     
     func completeWithError(_ error: HttpError) {
-        completion?(.failure(.noConnectivityError))
+        completionData.error = error
     }
     
     func completeWithValidData(_ data: Data) {
-        completion?(.success(data))
+        completionData.data = data
     }
     
     func completeWithInvalidData(_ data: Data) {
-        completion?(.success(data))
+        completionData.data = data
     }
 }

@@ -31,6 +31,8 @@
 		</dict>
 		<key>Main.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
@@ -118,6 +120,11 @@
 			<true/>
 		</dict>
 		<key>ACC0A82C2A0885F80051723C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACD7942A2A3621080029FB02</key>
 		<dict>
 			<key>primary</key>
 			<true/>
