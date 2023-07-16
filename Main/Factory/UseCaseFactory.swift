@@ -13,8 +13,11 @@ import Infra
 
 enum UseCaseFactory {
     
+    private static let httpClient: HttpPostClient = AlamofireAdapter()
+    private static let apiBaseURL = Enviroment.baseURL.value
+    
     static func makeRemoteAddAccount() -> AddAccountProtocol {
-        let url = URL(string: "https://demo3129794.mockable.io/api/alexandre/siginup")!
-        return RemoteAddAccount(url: url, httpClient: AlamofireAdapter())
+        let url = URL(string: "\(apiBaseURL)/siginup")!
+        return RemoteAddAccount(url: url, httpClient: httpClient)
     }
 }

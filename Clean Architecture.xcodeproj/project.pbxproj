@@ -24,6 +24,7 @@
 		AC47C1972A646F9A0020DDB5 /* AddAccountSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEFD0402A22BF5200CB83F0 /* AddAccountSpy.swift */; };
 		AC47C1982A64700D0020DDB5 /* XCTest+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFDCFFD29FDD54200FC2EFD /* XCTest+extensions.swift */; };
 		AC47C19A2A64948B0020DDB5 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47C1992A64948B0020DDB5 /* UseCaseFactory.swift */; };
+		AC47C19F2A6498B10020DDB5 /* Enviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC47C19E2A6498B10020DDB5 /* Enviroment.swift */; };
 		AC5B40C42A1AC0D200633096 /* FactoryAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B40C32A1AC0D200633096 /* FactoryAccountModels.swift */; };
 		AC5B40C52A1AC0E600633096 /* FactoryAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B40C32A1AC0D200633096 /* FactoryAccountModels.swift */; };
 		AC6655C22A1981DE0032E58F /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6A84E926B602FE00AC7B05 /* Domain.framework */; };
@@ -318,6 +319,9 @@
 		AC47C18E2A646EA30020DDB5 /* MainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC47C1902A646EA30020DDB5 /* SignupIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupIntegrationTests.swift; sourceTree = "<group>"; };
 		AC47C1992A64948B0020DDB5 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
+		AC47C19C2A64978C0020DDB5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		AC47C19D2A64984A0020DDB5 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		AC47C19E2A6498B10020DDB5 /* Enviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enviroment.swift; sourceTree = "<group>"; };
 		AC5B40C32A1AC0D200633096 /* FactoryAccountModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryAccountModels.swift; sourceTree = "<group>"; };
 		AC6655C82A1982900032E58F /* AlertViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewProtocol.swift; sourceTree = "<group>"; };
 		AC6655CC2A1986CD0032E58F /* EmailValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorProtocol.swift; sourceTree = "<group>"; };
@@ -529,6 +533,16 @@
 				AC47C1902A646EA30020DDB5 /* SignupIntegrationTests.swift */,
 			);
 			path = MainTests;
+			sourceTree = "<group>";
+		};
+		AC47C19B2A64977E0020DDB5 /* env */ = {
+			isa = PBXGroup;
+			children = (
+				AC47C19C2A64978C0020DDB5 /* Debug.xcconfig */,
+				AC47C19D2A64984A0020DDB5 /* Release.xcconfig */,
+				AC47C19E2A6498B10020DDB5 /* Enviroment.swift */,
+			);
+			path = env;
 			sourceTree = "<group>";
 		};
 		AC6655C72A1982860032E58F /* Views */ = {
@@ -772,6 +786,7 @@
 		ACD7942C2A3621080029FB02 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AC47C19B2A64977E0020DDB5 /* env */,
 				AC47C1872A646D850020DDB5 /* Composers */,
 				ACD7943F2A36214F0029FB02 /* Factory */,
 				ACD7942D2A3621080029FB02 /* AppDelegate.swift */,
@@ -1485,6 +1500,7 @@
 			files = (
 				ACD794412A36215F0029FB02 /* Proxies.swift in Sources */,
 				AC47C1892A646D970020DDB5 /* SignupComposer.swift in Sources */,
+				AC47C19F2A6498B10020DDB5 /* Enviroment.swift in Sources */,
 				ACD7942E2A3621080029FB02 /* AppDelegate.swift in Sources */,
 				AC47C19A2A64948B0020DDB5 /* UseCaseFactory.swift in Sources */,
 				ACD794302A3621080029FB02 /* SceneDelegate.swift in Sources */,
@@ -2258,6 +2274,7 @@
 		};
 		ACD7943D2A3621090029FB02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC47C19C2A64978C0020DDB5 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2292,6 +2309,7 @@
 		};
 		ACD7943E2A3621090029FB02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC47C19D2A64984A0020DDB5 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
