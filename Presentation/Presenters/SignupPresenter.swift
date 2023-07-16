@@ -15,7 +15,7 @@ public class SignupPresenter {
     private let addAccount: AddAccountProtocol
     
     public init(alertView: AlertViewProtocol, loadingView: LoadingViewProtocol,
-                emailValidator: EmailValidatorProtocol, addAccount: AddAccountProtocol) {
+         emailValidator: EmailValidatorProtocol, addAccount: AddAccountProtocol) {
         self.alertView = alertView
         self.loadingView = loadingView
         self.emailValidator = emailValidator
@@ -26,19 +26,17 @@ public class SignupPresenter {
         if let messageError = validate(addAccountViewModel: viewModel) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: messageError))
         } else {
-            Task {
-                do {
-                    let account = try await addAccount.add(addAccountModel: viewModel)
-                    DispatchQueue.main.async {
-                        self.alertView.showMessage(viewModel: .init(title: "Sucesso!", message: "Usuário \(account.name) adicionado com Sucesso!"))
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        self.alertView.showMessage(viewModel: .init(title: "Erro", message: "Falha ao adicionar usuário"))
-                    }
+            loadingView.isLoading = true
+            addAccount.add(addAccountModel: viewModel) { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case .success:
+                    self.alertView.showMessage(viewModel: .init(title: "Sucesso!", message: "Usuário adicionado com Sucesso!"))
+                case .failure:
+                    self.alertView.showMessage(viewModel: .init(title: "Erro", message: "Falha ao adicionar usuário"))
                 }
+                self.loadingView.isLoading = false
             }
-            loadingView.isLoading = false
         }
     }
     

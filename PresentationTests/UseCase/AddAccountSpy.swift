@@ -10,24 +10,18 @@ import Domain
 
 class AddAccountSpy: AddAccountProtocol {
     var addAccountModel: AddAccountModel?
-    private var accountModelResult: (accountModel: AccountModel?, error: DomainError?)?
+    private var completion: ((Result<AccountModel, DomainError>) -> Void)?
     
-    func add(addAccountModel: AddAccountModel) async throws -> AccountModel {
+    func add(addAccountModel: AddAccountModel, completion: @escaping (Result<AccountModel, DomainError>) -> Void) {
         self.addAccountModel = addAccountModel
-        guard let accountModel = accountModelResult?.accountModel, accountModelResult?.error != nil else {
-            if let error = accountModelResult?.error {
-                throw error
-            }
-            throw DomainError.unexpected
-        }
-        return accountModel
+        self.completion = completion
     }
     
     func complete(error: DomainError) {
-        self.accountModelResult?.error = error
+        self.completion?(.failure(error))
     }
     
     func complete(accountModel: AccountModel) {
-        self.accountModelResult?.accountModel = accountModel
+        self.completion?(.success(accountModel))
     }
 }
