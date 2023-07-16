@@ -538,9 +538,9 @@
 		AC47C19B2A64977E0020DDB5 /* env */ = {
 			isa = PBXGroup;
 			children = (
+				AC47C19E2A6498B10020DDB5 /* Enviroment.swift */,
 				AC47C19C2A64978C0020DDB5 /* Debug.xcconfig */,
 				AC47C19D2A64984A0020DDB5 /* Release.xcconfig */,
-				AC47C19E2A6498B10020DDB5 /* Enviroment.swift */,
 			);
 			path = env;
 			sourceTree = "<group>";
